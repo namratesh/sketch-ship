@@ -27,8 +27,8 @@ function Entry({
     faint: "text-ink-faint",
   }[tone];
   return (
-    <li className="flex gap-4 border-b border-dashed border-line py-3 last:border-b-0">
-      <span className={`font-display text-lg font-semibold tabular-nums ${toneClass}`}>{no}</span>
+    <li className="flex gap-4 border-b border-line/60 py-3 last:border-b-0">
+      <span className={`font-display text-lg font-bold tabular-nums ${toneClass}`}>{no}</span>
       <div className="min-w-0 flex-1">
         <div className="flex flex-wrap items-baseline justify-between gap-2">
           <p className={`text-xs font-bold uppercase tracking-[0.14em] ${toneClass}`}>{title}</p>
@@ -51,8 +51,8 @@ export default function FilingTimeline({ incident, takedowns, platforms }: Props
   const num = () => String(++n).padStart(2, "0");
 
   return (
-    <div className="border border-line bg-card p-5">
-      <h2 className="mb-1 font-display text-xl text-ink">Docket entries</h2>
+    <div className="card-surface p-5">
+      <h2 className="mb-1 font-display text-xl font-semibold text-ink">What's happened</h2>
       <ol>
         <Entry no={num()} tone="crimson" title="Leak detected" when={formatDate(incident.detected_at)}>
           {incident.similarity_score}% match on {incident.platform} — “{incident.reasoning}”

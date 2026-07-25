@@ -173,6 +173,27 @@
           "sharp unaliased edges"
         ]
       }
+    },
+    {
+      "id": "cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "filename": "Example.jpg",
+      "sha256": "99bd915a3819b1fee3722328ae904dde5459e9b15d56abd98b903c770a2f582c",
+      "uploaded_at": "2026-07-25T07:56:37.316865+00:00",
+      "path": "/uploads/cae40a2ddeb24bd9951c5ceb6b848cfc.jpg",
+      "fingerprint": {
+        "subject": "Diagonally aligned text reading 'just an Example'",
+        "dominant_colors": [
+          "dark red",
+          "light gray"
+        ],
+        "distinguishing_features": [
+          "Text 'just an Example' displayed across two lines",
+          "Diagonally tilted text at approximately a 45-degree angle",
+          "Dark red bold sans-serif typeface",
+          "Plain light gray/off-white solid background",
+          "Lowercase 'just an' positioned above capitalized 'Example'"
+        ]
+      }
     }
   ],
   "incidents": [
@@ -302,6 +323,78 @@
       "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
       "status": "DETECTED",
       "detected_at": "2026-07-25T07:14:55.359146+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "e7d159a2f5b34877b5feb713b61e4d41",
+      "asset_id": "cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "platform": "commons.wikimedia.org",
+      "leak_image_path": "/seed_leaks/d2fb14e5715d4cc8a582a464d3ccfe60_web.jpg",
+      "leak_url": "https://commons.wikimedia.org/wiki/File:Example_en.svg",
+      "similarity_score": 95,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T07:56:43.470411+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "2ccbf55098ec45d6a4628448e98e63be",
+      "asset_id": "cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "platform": "www.reddit.com",
+      "leak_image_path": "/seed_leaks/d58df330fa7c4d34abbd53ded4436f44_web.jpg",
+      "leak_url": "https://www.reddit.com/r/help/comments/1ucd7qk/images_wont_show_on_feed_when_using_the_new/",
+      "similarity_score": 88,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T07:56:44.119618+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "b452399dcfdc45bdbc6aa56639050b9f",
+      "asset_id": "cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "platform": "simple.wiktionary.org",
+      "leak_image_path": "/seed_leaks/8327e5ff0d3a48cdb4f99ad60dee006c_web.jpg",
+      "leak_url": "https://simple.wiktionary.org/wiki/Help:Images",
+      "similarity_score": 81,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T07:56:44.379645+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "801fb172da3f4eb3841e4e457d6324e1",
+      "asset_id": "cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "platform": "commons.wikimedia.org",
+      "leak_image_path": "/seed_leaks/dab779ca148a4458ae0b8f94a90059bf_web.jpg",
+      "leak_url": "https://commons.wikimedia.org/wiki/File:Example_i18n.svg",
+      "similarity_score": 74,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T07:56:44.922485+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "099b8451ee0241cd90f57cdf3e0aa70a",
+      "asset_id": "cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "platform": "gnu-octave.github.io",
+      "leak_image_path": "/seed_leaks/d585cc45a2ed4b558466321de263d80c_web.jpg",
+      "leak_url": "https://gnu-octave.github.io/packages/pkg-example/",
+      "similarity_score": 67,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T07:56:45.542660+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "74d23e87ae5449459b507e5cdc4c4468",
+      "asset_id": "cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "platform": "en.wikipedia.org",
+      "leak_image_path": "/seed_leaks/e686547c44a243feb30f6d4bb65473cf_web.jpg",
+      "leak_url": "https://en.wikipedia.org/wiki/Template:Infobox/testcases",
+      "similarity_score": 60,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T07:56:45.905022+00:00",
       "source": "SERPAPI"
     }
   ],
@@ -561,6 +654,62 @@
       "timestamp": "2026-07-25T07:14:55.359236+00:00",
       "action": "SCAN_RUN",
       "details": "Real web scan completed for asset a4bc58bd0815461888e9155652650627: 2 new incident(s)",
+      "incident_id": null
+    },
+    {
+      "id": "cfb7da73d18b4531a3541edbf50fc9ed",
+      "timestamp": "2026-07-25T07:56:37.318275+00:00",
+      "action": "ASSET_UPLOADED",
+      "details": "Uploaded asset 'Example.jpg' (sha256 99bd915a3819...)",
+      "incident_id": null
+    },
+    {
+      "id": "f52707aabf0f43bb8db9d819956ad6a9",
+      "timestamp": "2026-07-25T07:56:43.470484+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on commons.wikimedia.org via SerpApi (score 95) for asset cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "incident_id": "e7d159a2f5b34877b5feb713b61e4d41"
+    },
+    {
+      "id": "57b2fcc5108d4ee1b0981b7b83c2b986",
+      "timestamp": "2026-07-25T07:56:44.119699+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on www.reddit.com via SerpApi (score 88) for asset cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "incident_id": "2ccbf55098ec45d6a4628448e98e63be"
+    },
+    {
+      "id": "712eb9c58e8c4531b635888dd0b23b2f",
+      "timestamp": "2026-07-25T07:56:44.379898+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on simple.wiktionary.org via SerpApi (score 81) for asset cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "incident_id": "b452399dcfdc45bdbc6aa56639050b9f"
+    },
+    {
+      "id": "3899efaf02844a278970b158d418cc64",
+      "timestamp": "2026-07-25T07:56:44.922630+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on commons.wikimedia.org via SerpApi (score 74) for asset cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "incident_id": "801fb172da3f4eb3841e4e457d6324e1"
+    },
+    {
+      "id": "e93606f04d7c498687e7c576fd7a7332",
+      "timestamp": "2026-07-25T07:56:45.542761+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on gnu-octave.github.io via SerpApi (score 67) for asset cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "incident_id": "099b8451ee0241cd90f57cdf3e0aa70a"
+    },
+    {
+      "id": "c477904f8b3042ee901f145e6b07c223",
+      "timestamp": "2026-07-25T07:56:45.905082+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on en.wikipedia.org via SerpApi (score 60) for asset cae40a2ddeb24bd9951c5ceb6b848cfc",
+      "incident_id": "74d23e87ae5449459b507e5cdc4c4468"
+    },
+    {
+      "id": "a410552e229b41b7b1c8bf455941efd6",
+      "timestamp": "2026-07-25T07:56:46.180194+00:00",
+      "action": "SCAN_RUN",
+      "details": "Real web scan completed for asset cae40a2ddeb24bd9951c5ceb6b848cfc: 6 new incident(s)",
       "incident_id": null
     }
   ]

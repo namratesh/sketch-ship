@@ -35,7 +35,7 @@ export default function Onboarding({ onDone }: Props) {
     setError(null);
     try {
       await postProfile(form);
-      showToast(`Welcome, ${form.name.split(" ")[0] || "creator"} — you are the claimant of record.`, "success");
+      showToast(`Welcome, ${form.name.split(" ")[0] || "creator"} — GhostTrace has your back.`, "success");
       onDone();
     } catch (err) {
       setError(err instanceof ApiError ? err.message : "Could not save profile.");
@@ -49,12 +49,14 @@ export default function Onboarding({ onDone }: Props) {
   return (
     <div className="mx-auto flex min-h-[70vh] max-w-lg flex-col justify-center">
       <div className="mb-8 text-center">
-        <Ghost className="mx-auto mb-3 h-12 w-12 stroke-[1.5] text-ink" />
-        <p className="text-[10px] font-semibold uppercase tracking-[0.24em] text-ink-faint">
-          Form GT-1 · Claimant Registration
+        <span className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-full bg-violet-wash text-violet-deep">
+          <Ghost className="h-7 w-7 stroke-[1.5]" />
+        </span>
+        <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-deep">
+          Set up your profile
         </p>
-        <h1 className="mt-1 font-display text-3xl tracking-tight text-ink">
-          Claimant of Record
+        <h1 className="mt-1 font-display text-3xl font-bold tracking-tight text-ink">
+          Who are we protecting?
         </h1>
         <p className="mx-auto mt-3 max-w-sm text-xs leading-relaxed text-ink-soft">
           Tell us who you are so we can file DMCA takedowns on your behalf. This
@@ -64,10 +66,10 @@ export default function Onboarding({ onDone }: Props) {
 
       <form
         onSubmit={submit}
-        className="space-y-5 border border-line bg-card p-6 shadow-[4px_5px_0_0_rgba(33,29,20,0.1)]"
+        className="card-surface space-y-5 p-6"
       >
         {error && (
-          <div className="border-l-4 border-crimson bg-crimson-wash px-3 py-2 text-xs text-crimson-deep">
+          <div className="rounded-xl border border-crimson/30 bg-crimson-wash px-3 py-2 text-xs text-ink">
             {error}
           </div>
         )}
@@ -117,15 +119,15 @@ export default function Onboarding({ onDone }: Props) {
           <button
             type="submit"
             disabled={submitting}
-            className="flex flex-1 cursor-pointer items-center justify-center gap-2 border-2 border-ink bg-ink px-4 py-2.5 text-xs font-bold uppercase tracking-[0.16em] text-paper shadow-[3px_3px_0_0_#b23a30] transition hover:-translate-y-0.5 hover:shadow-[4px_4px_0_0_#b23a30] active:translate-y-0.5 active:shadow-[1px_1px_0_0_#b23a30] disabled:opacity-60"
+            className="flex flex-1 cursor-pointer items-center justify-center gap-2 rounded-full bg-ink px-4 py-3 text-xs font-bold uppercase tracking-[0.16em] text-paper shadow-[0_8px_24px_-8px_rgba(139,107,242,0.5)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-8px_rgba(139,107,242,0.65)] disabled:opacity-60"
           >
             {submitting && <Spinner size={14} />}
-            {submitting ? "Entering record…" : "Sign & continue"}
+            {submitting ? "Setting up…" : "Continue"}
           </button>
           <button
             type="button"
             onClick={fillDemo}
-            className="shrink-0 cursor-pointer border border-line px-4 py-2.5 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-soft transition hover:border-ink hover:text-ink"
+            className="shrink-0 cursor-pointer rounded-full border border-line px-4 py-3 text-[11px] font-semibold uppercase tracking-[0.12em] text-ink-soft transition hover:border-ink-faint hover:text-ink"
           >
             Use demo profile
           </button>
@@ -136,7 +138,7 @@ export default function Onboarding({ onDone }: Props) {
 }
 
 const inputClass =
-  "w-full border-0 border-b-2 border-line bg-transparent px-1 py-2 font-mono text-sm text-ink placeholder:text-ink-faint focus:border-crimson focus:outline-none";
+  "w-full rounded-xl border border-line bg-well px-3 py-2.5 text-sm text-ink placeholder:text-ink-faint focus:border-violet focus:outline-none focus:ring-2 focus:ring-violet/20";
 
 function Field({
   label,
@@ -149,7 +151,7 @@ function Field({
 }) {
   return (
     <label className="block">
-      <span className="mb-1 block text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-faint">
+      <span className="mb-1.5 block text-[10px] font-semibold uppercase tracking-[0.18em] text-ink-faint">
         {label}
         {required && <span className="text-crimson"> *</span>}
       </span>

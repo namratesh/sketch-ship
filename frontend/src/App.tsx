@@ -66,7 +66,7 @@ function AppShell() {
         {profileState.status === "loading" ? (
           <div className="flex items-center justify-center gap-2 py-24 text-xs uppercase tracking-[0.16em] text-ink-faint">
             <Spinner size={20} />
-            Opening the docket…
+            Loading GhostTrace…
           </div>
         ) : (
           <Routes>

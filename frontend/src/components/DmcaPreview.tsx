@@ -11,8 +11,6 @@ interface Props {
   onGenerate: () => void;
 }
 
-/* The notice renders as the typed legal document it is: a white sheet with a
-   red margin rule, and a FILED stamp struck across the corner once filed. */
 export default function DmcaPreview({
   platform,
   status,
@@ -35,25 +33,25 @@ export default function DmcaPreview({
   };
 
   return (
-    <div className="border border-line bg-card p-4">
+    <div className="card-surface p-4">
       <div className="mb-3 flex items-center justify-between gap-3">
         <p className="text-xs font-bold uppercase tracking-[0.14em] text-ink">
           DMCA Notice — {platform}
         </p>
         {status === "filed" && (
-          <span className="stamp stamp-tilt text-verdant">
+          <span className="pill animate-stamp-in bg-verdant-wash text-verdant">
             Filed{filedAt ? ` · ${new Date(filedAt).toLocaleTimeString()}` : ""}
           </span>
         )}
         {status === "preview" && (
-          <span className="stamp stamp-tilt text-brass">Draft — not filed</span>
+          <span className="pill bg-brass-wash text-brass">Draft — not filed</span>
         )}
       </div>
 
       {status === "idle" && (
         <button
           onClick={onGenerate}
-          className="w-full cursor-pointer border border-ink bg-card px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-ink transition hover:bg-ink hover:text-card"
+          className="w-full cursor-pointer rounded-xl border border-violet/40 bg-violet-wash px-4 py-2.5 text-xs font-semibold uppercase tracking-[0.14em] text-violet-deep transition hover:bg-violet hover:text-white"
         >
           Draft DMCA notice for {platform}
         </button>
@@ -68,10 +66,10 @@ export default function DmcaPreview({
 
       {status === "error" && (
         <div className="space-y-2">
-          <p className="text-xs text-crimson-deep">{errorMessage ?? "Could not generate preview."}</p>
+          <p className="text-xs text-crimson">{errorMessage ?? "Could not generate preview."}</p>
           <button
             onClick={onGenerate}
-            className="stamp cursor-pointer text-crimson transition hover:bg-crimson hover:text-card"
+            className="pill cursor-pointer border-crimson/40 text-crimson transition hover:bg-crimson hover:text-white"
           >
             Retry
           </button>
@@ -80,21 +78,20 @@ export default function DmcaPreview({
 
       {(status === "preview" || status === "filed") && noticeText && (
         <div className="relative">
-          <div className="relative max-h-80 overflow-auto border border-line bg-white shadow-[2px_3px_0_0_rgba(33,29,20,0.08)]">
-            {/* red margin rule, like a typed legal sheet */}
-            <span className="pointer-events-none absolute inset-y-0 left-9 w-px bg-crimson/30" />
-            <pre className="whitespace-pre-wrap py-4 pl-14 pr-6 font-mono text-xs leading-relaxed text-ink">
+          <div className="relative max-h-80 overflow-auto rounded-xl border border-line bg-well">
+            <span className="pointer-events-none absolute inset-y-0 left-9 w-px bg-violet/25" />
+            <pre className="whitespace-pre-wrap py-4 pl-14 pr-6 font-mono text-xs leading-relaxed text-ink-soft">
               {noticeText}
             </pre>
             {status === "filed" && (
-              <span className="stamp pointer-events-none absolute right-4 top-4 rotate-[-8deg] text-base text-verdant/80">
+              <span className="pill pointer-events-none absolute right-3 top-3 bg-verdant-wash text-verdant">
                 Filed
               </span>
             )}
           </div>
           <button
             onClick={copy}
-            className="absolute bottom-2 right-2 flex cursor-pointer items-center gap-1 border border-line bg-card px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.1em] text-ink-soft shadow transition hover:bg-well"
+            className="absolute bottom-3 right-3 flex cursor-pointer items-center gap-1 rounded-full border border-line bg-card px-2.5 py-1 text-[11px] font-medium uppercase tracking-[0.1em] text-ink-soft shadow-lg transition hover:border-ink-faint hover:text-ink"
           >
             {copied ? (
               <>

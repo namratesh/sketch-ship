@@ -9,7 +9,7 @@ export default function GoogleVisionBadge({ size = "md" }: Props) {
   return (
     <span
       title="Found via real Google Cloud Vision Web Detection search, not the seeded demo scan"
-      className={`inline-flex items-center gap-1.5 border border-azure/40 bg-azure-wash text-[11px] font-semibold uppercase tracking-[0.14em] text-azure ${pad}`}
+      className={`inline-flex items-center gap-1.5 rounded-full border border-azure/30 bg-azure-wash text-[11px] font-semibold uppercase tracking-[0.1em] text-azure ${pad}`}
     >
       <svg viewBox="0 0 24 24" className="h-3 w-3 shrink-0" aria-hidden>
         <path fill="#4285F4" d="M23.49 12.27c0-.79-.07-1.54-.19-2.27H12v4.51h6.47a5.54 5.54 0 0 1-2.4 3.63v3h3.88c2.27-2.09 3.54-5.17 3.54-8.87Z" />

@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Search } from "lucide-react";
+import { Search, ImageOff } from "lucide-react";
 import {
   getIncident,
   getAssets,
@@ -48,13 +48,13 @@ function ExhibitFrame({
 }) {
   return (
     <figure
-      className={`border bg-card p-2 shadow-[3px_4px_0_0_rgba(33,29,20,0.1)] ${
-        tone === "crimson" ? "border-crimson/50" : "border-line"
+      className={`card-surface overflow-hidden p-2 ${
+        tone === "crimson" ? "border-crimson/30" : ""
       }`}
     >
-      <div className="aspect-video border border-line bg-well">{children}</div>
+      <div className="aspect-video overflow-hidden rounded-xl bg-well">{children}</div>
       <figcaption
-        className={`mt-2 px-1 pb-1 text-[11px] font-bold uppercase tracking-[0.18em] ${
+        className={`mt-2 px-1 pb-1 text-[11px] font-bold uppercase tracking-[0.16em] ${
           tone === "crimson" ? "text-crimson" : "text-ink-soft"
         }`}
       >
@@ -74,6 +74,8 @@ export default function IncidentRoom() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [notFound, setNotFound] = useState(false);
+  const [brokenOriginal, setBrokenOriginal] = useState(false);
+  const [brokenLeak, setBrokenLeak] = useState(false);
 
   const [activeTab, setActiveTab] = useState<string>(BASE_PLATFORMS[0]);
   const [previews, setPreviews] = useState<Record<string, PreviewState>>({
@@ -190,13 +192,13 @@ export default function IncidentRoom() {
     return (
       <div className="mx-auto max-w-md py-24 text-center">
         <Search className="mx-auto mb-2 h-10 w-10 text-ink-faint" />
-        <p className="mb-1 font-display text-xl text-ink">Case not found</p>
+        <p className="mb-1 font-display text-xl font-semibold text-ink">Case not found</p>
         <p className="mb-5 text-xs text-ink-soft">
           It may have been resolved or the link is stale.
         </p>
         <Link
           to="/incidents"
-          className="text-[11px] font-semibold uppercase tracking-[0.14em] text-crimson hover:text-crimson-deep"
+          className="text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-deep hover:text-violet"
         >
           ← Back to cases
         </Link>
@@ -221,7 +223,7 @@ export default function IncidentRoom() {
           ← All cases
         </Link>
         <div className="mt-3 flex flex-wrap items-center gap-3">
-          <h1 className="font-display text-4xl tracking-tight text-ink">
+          <h1 className="font-display text-4xl font-bold tracking-tight text-ink">
             Case {caseNo(incident.id)}
           </h1>
           <PlatformBadge platform={incident.platform} />
@@ -232,7 +234,7 @@ export default function IncidentRoom() {
           href={incident.leak_url}
           target="_blank"
           rel="noreferrer"
-          className="mt-2 inline-block truncate text-[11px] text-ink-faint hover:text-crimson hover:underline"
+          className="mt-2 inline-block truncate text-[11px] text-ink-faint hover:text-violet-deep hover:underline"
         >
           {incident.leak_url}
         </a>
@@ -241,37 +243,41 @@ export default function IncidentRoom() {
       {/* Exhibit A vs Exhibit B */}
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
         <ExhibitFrame label="Exhibit A — Original work" tone="ink">
-          {originalAsset ? (
+          {originalAsset && !brokenOriginal ? (
             <img
               src={uploadUrl(originalAsset.path || originalAsset.filename)}
               alt="Original asset"
               className="h-full w-full object-contain"
-              onError={(e) => {
-                (e.currentTarget as HTMLImageElement).style.display = "none";
-              }}
+              onError={() => setBrokenOriginal(true)}
             />
           ) : (
-            <div className="flex h-full items-center justify-center text-xs text-ink-faint">
-              Original asset unavailable
+            <div className="flex h-full flex-col items-center justify-center gap-1.5 text-ink-faint">
+              <ImageOff className="h-6 w-6 stroke-[1.5]" />
+              <span className="text-xs">Original asset unavailable</span>
             </div>
           )}
         </ExhibitFrame>
         <ExhibitFrame label={`Exhibit B — Infringing copy · ${incident.platform}`} tone="crimson">
-          <img
-            src={seedLeakUrl(incident.leak_image_path)}
-            alt="Leaked copy"
-            className="h-full w-full object-contain"
-            onError={(e) => {
-              (e.currentTarget as HTMLImageElement).style.display = "none";
-            }}
-          />
+          {!brokenLeak ? (
+            <img
+              src={seedLeakUrl(incident.leak_image_path)}
+              alt="Leaked copy"
+              className="h-full w-full object-contain"
+              onError={() => setBrokenLeak(true)}
+            />
+          ) : (
+            <div className="flex h-full flex-col items-center justify-center gap-1.5 text-ink-faint">
+              <ImageOff className="h-6 w-6 stroke-[1.5]" />
+              <span className="text-xs">Leaked copy unavailable</span>
+            </div>
+          )}
         </ExhibitFrame>
       </div>
 
       {/* Finding: score + expert reasoning */}
-      <div className="flex flex-col items-center gap-4 border-y-2 border-ink py-8 text-center">
+      <div className="card-surface flex flex-col items-center gap-4 py-8 text-center">
         <ScoreRing score={incident.similarity_score} size={140} strokeWidth={10} caption="match" />
-        <p className="max-w-2xl font-display text-lg italic leading-relaxed text-ink">
+        <p className="max-w-2xl text-lg italic leading-relaxed text-ink">
           “{incident.reasoning}”
         </p>
         <p className="text-[11px] uppercase tracking-[0.18em] text-ink-faint">
@@ -284,18 +290,18 @@ export default function IncidentRoom() {
 
       {/* DMCA notice tabs */}
       <div>
-        <h2 className="mb-3 border-b border-ink pb-2 font-display text-2xl text-ink">
+        <h2 className="mb-3 font-display text-2xl font-semibold text-ink">
           The Notice
         </h2>
-        <div className="mb-4 flex flex-wrap gap-5 text-[11px] font-semibold uppercase tracking-[0.16em]">
+        <div className="mb-4 flex flex-wrap gap-5 border-b border-line text-[11px] font-semibold uppercase tracking-[0.14em]">
           {platforms.map((p) => (
             <button
               key={p}
               onClick={() => selectTab(p)}
-              className={`cursor-pointer border-b-2 pb-1 transition ${
+              className={`cursor-pointer border-b-2 pb-2 transition ${
                 activeTab === p
-                  ? "border-crimson text-ink"
-                  : "border-transparent text-ink-faint hover:border-line hover:text-ink"
+                  ? "border-violet text-ink"
+                  : "border-transparent text-ink-faint hover:border-line hover:text-ink-soft"
               }`}
             >
               {p}
@@ -315,26 +321,26 @@ export default function IncidentRoom() {
       </div>
 
       {/* File everywhere */}
-      <div className="space-y-5 border-3 border-double border-crimson/60 bg-crimson-wash/40 p-6">
+      <div className="space-y-5 rounded-3xl border border-crimson/25 bg-crimson-wash/30 p-6">
         <div className="text-center">
-          <h2 className="font-display text-2xl text-crimson-deep">
+          <h2 className="font-display text-2xl font-bold text-ink">
             Ready to take this down everywhere?
           </h2>
           <p className="mx-auto mt-1 max-w-xl text-xs leading-relaxed text-ink-soft">
-            One strike drafts and files a DMCA takedown notice on {platforms.join(", ")}{" "}
+            One click drafts and files a DMCA takedown notice on {platforms.join(", ")}{" "}
             simultaneously — every filing entered into the record below.
           </p>
         </div>
         <div className="relative">
           {justNuked && (
             <>
-              <span className="pointer-events-none absolute inset-0 border-2 border-verdant/70 animate-success-ring" />
+              <span className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-verdant/70 animate-success-ring" />
               <span
-                className="pointer-events-none absolute inset-0 border-2 border-verdant/70 animate-success-ring"
+                className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-verdant/70 animate-success-ring"
                 style={{ animationDelay: "150ms" }}
               />
               <span
-                className="pointer-events-none absolute inset-0 border-2 border-verdant/70 animate-success-ring"
+                className="pointer-events-none absolute inset-0 rounded-2xl border-2 border-verdant/70 animate-success-ring"
                 style={{ animationDelay: "300ms" }}
               />
             </>

@@ -6,9 +6,9 @@ interface Props {
 }
 
 function colorFor(score: number): string {
-  if (score >= 85) return "#b23a30"; // crimson — near-certain match
-  if (score >= 60) return "#96762a"; // brass — probable
-  return "#6b6353"; // soft ink — inconclusive
+  if (score >= 85) return "#fb4d67"; // crimson — near-certain match
+  if (score >= 60) return "#fbbf24"; // amber — probable
+  return "#5f6577"; // faint — inconclusive
 }
 
 export default function ScoreRing({ score, size = 56, strokeWidth = 5, caption }: Props) {
@@ -33,14 +33,14 @@ export default function ScoreRing({ score, size = 56, strokeWidth = 5, caption }
             cy={size / 2}
             r={radius}
             strokeWidth={strokeWidth}
-            strokeLinecap="butt"
+            strokeLinecap="round"
             className="fill-none transition-[stroke-dashoffset] duration-700 ease-out"
             style={{ stroke: color, strokeDasharray: circumference, strokeDashoffset: offset }}
           />
         </svg>
         <div className="absolute inset-0 flex items-center justify-center">
           <span
-            className="font-display font-semibold tabular-nums text-ink"
+            className="font-display font-bold tabular-nums text-ink"
             style={{ fontSize: size * 0.3 }}
           >
             {score}

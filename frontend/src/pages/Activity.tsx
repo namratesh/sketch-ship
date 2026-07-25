@@ -6,7 +6,7 @@ import EmptyState from "../components/EmptyState";
 import ErrorBanner from "../components/ErrorBanner";
 
 const ACTION_META: Record<string, { icon: typeof Upload; label: string; color: string }> = {
-  ASSET_UPLOADED: { icon: Upload, label: "Exhibit entered", color: "text-ink" },
+  ASSET_UPLOADED: { icon: Upload, label: "Exhibit added", color: "text-violet-deep" },
   SCAN_RUN: { icon: Search, label: "Sweep run", color: "text-azure" },
   INCIDENT_DETECTED: { icon: Siren, label: "Case opened", color: "text-crimson" },
   DMCA_FILED: { icon: FileText, label: "DMCA filed", color: "text-verdant" },
@@ -78,15 +78,15 @@ export default function Activity() {
     <div className="space-y-6">
       <div className="flex flex-wrap items-end justify-between gap-4">
         <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-faint">
-            Certified audit trail · newest first
+          <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-violet-deep">
+            Every action, newest first
           </p>
-          <h1 className="mt-1 font-display text-4xl tracking-tight text-ink">The Record</h1>
+          <h1 className="mt-1 font-display text-4xl font-bold tracking-tight text-ink">Activity</h1>
         </div>
         <button
           onClick={exportJson}
           disabled={entries.length === 0}
-          className="flex cursor-pointer items-center gap-1.5 border border-ink px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink transition hover:bg-ink hover:text-paper disabled:cursor-not-allowed disabled:opacity-50"
+          className="flex cursor-pointer items-center gap-1.5 rounded-full border border-line px-4 py-2 text-[11px] font-semibold uppercase tracking-[0.14em] text-ink-soft transition hover:border-ink-faint hover:text-ink disabled:cursor-not-allowed disabled:opacity-50"
         >
           <Download className="h-3.5 w-3.5" /> Export JSON
         </button>
@@ -101,9 +101,9 @@ export default function Activity() {
           ))}
         </div>
       ) : entries.length === 0 ? (
-        <EmptyState icon={<Radar />} title="Nothing on record" subtitle="Actions you take will be entered here in real time." />
+        <EmptyState icon={<Radar />} title="Nothing here yet" subtitle="Actions you take will show up here in real time." />
       ) : (
-        <ol className="max-h-[70vh] overflow-y-auto border border-line bg-card">
+        <div className="card-surface max-h-[70vh] overflow-y-auto">
           {entries.map((entry, i) => {
             const meta = ACTION_META[entry.action];
             const Icon = meta?.icon;
@@ -111,13 +111,9 @@ export default function Activity() {
             const label = meta?.label ?? entry.action;
             const day = dayLabel(entry.timestamp);
             const showDayHeader = i === 0 || dayLabel(entries[i - 1].timestamp) !== day;
-            const lineNo = String(entries.length - i).padStart(3, "0");
             const body = (
               <>
-                <span className="w-10 shrink-0 pt-0.5 text-[11px] tabular-nums text-ink-faint">
-                  {lineNo}
-                </span>
-                <span className={`shrink-0 pt-0.5 ${color}`}>
+                <span className={`mt-0.5 flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-well ${color}`}>
                   {Icon ? <Icon className="h-3.5 w-3.5" /> : "•"}
                 </span>
                 <div className="min-w-0 flex-1">
@@ -134,10 +130,10 @@ export default function Activity() {
               </>
             );
             return (
-              <li key={entry.id}>
+              <div key={entry.id}>
                 {showDayHeader && (
-                  <div className="sticky top-0 z-10 border-b border-ink bg-paper px-4 py-1.5">
-                    <span className="text-[10px] font-bold uppercase tracking-[0.22em] text-ink-soft">
+                  <div className="sticky top-0 z-10 border-b border-line bg-card/95 px-4 py-1.5 backdrop-blur-sm">
+                    <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-ink-faint">
                       {day}
                     </span>
                   </div>
@@ -145,20 +141,20 @@ export default function Activity() {
                 {entry.incident_id ? (
                   <Link
                     to={`/incidents/${entry.incident_id}`}
-                    className="group flex items-start gap-3 border-b border-dashed border-line px-4 py-3 transition hover:bg-well/50"
+                    className="group flex items-start gap-3 border-b border-line/60 px-4 py-3 transition hover:bg-well/50"
                   >
                     {body}
-                    <ChevronRight className="h-4 w-4 shrink-0 self-center text-ink-faint transition group-hover:text-crimson" />
+                    <ChevronRight className="h-4 w-4 shrink-0 self-center text-ink-faint transition group-hover:text-violet-deep" />
                   </Link>
                 ) : (
-                  <div className="flex items-start gap-3 border-b border-dashed border-line px-4 py-3">
+                  <div className="flex items-start gap-3 border-b border-line/60 px-4 py-3">
                     {body}
                   </div>
                 )}
-              </li>
+              </div>
             );
           })}
-        </ol>
+        </div>
       )}
     </div>
   );

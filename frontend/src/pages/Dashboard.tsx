@@ -73,38 +73,40 @@ export default function Dashboard() {
       <section>
         <div className="mb-6 flex flex-wrap items-end justify-between gap-4">
           <div>
-            <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-ink-faint">
-              Status of matters ·{" "}
+            <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-violet-deep">
+              Protection status ·{" "}
               {new Date().toLocaleDateString(undefined, { dateStyle: "long" })}
             </p>
-            <h1 className="mt-1 font-display text-4xl tracking-tight text-ink">The Docket</h1>
+            <h1 className="mt-1 font-display text-4xl font-bold tracking-tight text-ink">
+              Your content, watched.
+            </h1>
           </div>
           <button
             onClick={runScan}
             disabled={scanning}
-            className="flex cursor-pointer items-center gap-2 border-2 border-ink bg-ink px-5 py-2.5 text-xs font-bold uppercase tracking-[0.18em] text-paper shadow-[3px_3px_0_0_#b23a30] transition hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[5px_5px_0_0_#b23a30] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0_0_#b23a30] disabled:cursor-wait disabled:opacity-70"
+            className="flex cursor-pointer items-center gap-2 rounded-full bg-ink px-5 py-3 text-xs font-bold uppercase tracking-[0.16em] text-paper shadow-[0_8px_24px_-8px_rgba(139,107,242,0.5)] transition hover:-translate-y-0.5 hover:shadow-[0_12px_28px_-8px_rgba(139,107,242,0.65)] active:translate-y-0 disabled:cursor-wait disabled:opacity-70"
           >
             {scanning ? <Spinner size={16} /> : <Search className="h-4 w-4" />}
             {scanning ? "Sweeping for leaks…" : "Run Sweep"}
           </button>
         </div>
 
-        <div className="grid grid-cols-2 gap-px border border-line bg-line lg:grid-cols-4">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-4">
           <StatCard label="Exhibits on file" value={stats?.assets ?? 0} accent="violet" icon={<Image />} loading={statsLoading} />
-          <StatCard label="Open cases" value={stats?.incidents ?? 0} accent="amber" icon={<Siren />} loading={statsLoading} />
-          <StatCard label="Notices filed" value={stats?.filed ?? 0} accent="emerald" icon={<FileText />} loading={statsLoading} />
-          <StatCard label="Resolved" value={stats?.resolved ?? 0} accent="red" icon={<CheckCircle2 />} loading={statsLoading} />
+          <StatCard label="Open cases" value={stats?.incidents ?? 0} accent="red" icon={<Siren />} loading={statsLoading} />
+          <StatCard label="Notices filed" value={stats?.filed ?? 0} accent="amber" icon={<FileText />} loading={statsLoading} />
+          <StatCard label="Resolved" value={stats?.resolved ?? 0} accent="emerald" icon={<CheckCircle2 />} loading={statsLoading} />
         </div>
       </section>
 
       <section>
-        <div className="mb-3 flex items-baseline justify-between border-b border-ink pb-2">
-          <h2 className="font-display text-2xl text-ink">Latest on record</h2>
+        <div className="mb-3 flex items-baseline justify-between">
+          <h2 className="font-display text-2xl font-semibold text-ink">Recent activity</h2>
           <Link
             to="/activity"
-            className="text-[11px] font-semibold uppercase tracking-[0.14em] text-crimson hover:text-crimson-deep"
+            className="text-[11px] font-semibold uppercase tracking-[0.14em] text-violet-deep hover:text-violet"
           >
-            Full record →
+            View all →
           </Link>
         </div>
 
@@ -119,19 +121,19 @@ export default function Dashboard() {
         ) : activity.length === 0 ? (
           <EmptyState
             icon={<Radar />}
-            title="Nothing on record yet"
-            subtitle="Submit an exhibit and run a sweep to start building your audit trail."
+            title="Nothing here yet"
+            subtitle="Submit an exhibit and run a sweep to start watching for leaks."
             action={
               <Link
                 to="/assets"
-                className="border-2 border-ink bg-ink px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-paper transition hover:bg-crimson hover:border-crimson"
+                className="rounded-full bg-violet px-4 py-2 text-[11px] font-bold uppercase tracking-[0.16em] text-white transition hover:brightness-110"
               >
                 Submit your first exhibit
               </Link>
             }
           />
         ) : (
-          <ul>
+          <div className="card-surface divide-y divide-line/60 overflow-hidden">
             {activity.map((entry) => {
               const Icon = ACTION_ICON[entry.action];
               const iconEl = Icon ? (
@@ -142,29 +144,27 @@ export default function Dashboard() {
               const row = (
                 <>
                   {iconEl}
-                  <span className="flex-1 truncate text-xs text-ink">{entry.details}</span>
-                  <span className="ledger-dots" />
+                  <span className="flex-1 truncate text-xs text-ink-soft">{entry.details}</span>
                   <span className="shrink-0 text-[11px] tabular-nums text-ink-faint">
                     {timeAgo(entry.timestamp)}
                   </span>
                 </>
               );
-              return (
-                <li key={entry.id} className="border-b border-dashed border-line last:border-b-0">
-                  {entry.incident_id ? (
-                    <Link
-                      to={`/incidents/${entry.incident_id}`}
-                      className="ledger-row px-1 py-3 transition hover:bg-card"
-                    >
-                      {row}
-                    </Link>
-                  ) : (
-                    <div className="ledger-row px-1 py-3">{row}</div>
-                  )}
-                </li>
+              return entry.incident_id ? (
+                <Link
+                  key={entry.id}
+                  to={`/incidents/${entry.incident_id}`}
+                  className="flex items-center gap-3 px-4 py-3 transition hover:bg-well/60"
+                >
+                  {row}
+                </Link>
+              ) : (
+                <div key={entry.id} className="flex items-center gap-3 px-4 py-3">
+                  {row}
+                </div>
               );
             })}
-          </ul>
+          </div>
         )}
       </section>
     </div>

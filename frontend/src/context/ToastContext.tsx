@@ -35,11 +35,11 @@ function Icon({ kind }: { kind: ToastKind }) {
 function accentClasses(kind: ToastKind) {
   switch (kind) {
     case "success":
-      return "border-l-verdant text-verdant";
+      return "border-l-verdant [&_svg]:text-verdant";
     case "error":
-      return "border-l-crimson text-crimson";
+      return "border-l-crimson [&_svg]:text-crimson";
     default:
-      return "border-l-ink text-ink-soft";
+      return "border-l-violet [&_svg]:text-violet-deep";
   }
 }
 
@@ -67,7 +67,7 @@ export function ToastProvider({ children }: { children: ReactNode }) {
           <div
             key={t.id}
             role="status"
-            className={`animate-toast-in pointer-events-auto flex items-start gap-3 border border-l-4 border-line bg-card px-4 py-3 shadow-[3px_3px_0_0_rgba(33,29,20,0.15)] ${accentClasses(
+            className={`animate-toast-in pointer-events-auto flex items-start gap-3 rounded-xl border border-line border-l-2 bg-card px-4 py-3 shadow-2xl shadow-black/40 ${accentClasses(
               t.kind
             )}`}
           >

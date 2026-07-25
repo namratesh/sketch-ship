@@ -1,24 +1,10 @@
 @import "tailwindcss";
 
 /* ------------------------------------------------------------------ */
-/* GhostTrace "Case File" design system — paper, ink, rubber stamps.  */
+/* GhostTrace "Guardian" design system — dark, confident, protective. */
 /* ------------------------------------------------------------------ */
 
-/* Self-hosted fonts (latin subsets) — no network dependency at demo time. */
-@font-face {
-  font-family: "Fraunces";
-  font-style: normal;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("/fonts/fraunces.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Fraunces";
-  font-style: italic;
-  font-weight: 400 700;
-  font-display: swap;
-  src: url("/fonts/fraunces-italic.woff2") format("woff2");
-}
+/* Self-hosted mono (latin subset) — no network dependency at demo time. */
 @font-face {
   font-family: "IBM Plex Mono";
   font-style: normal;
@@ -49,34 +35,39 @@
 }
 
 @theme {
-  /* Paper stack */
-  --color-paper: #f2eee3;
-  --color-card: #faf8f0;
-  --color-well: #e9e3d1;
+  /* Surface stack — deep charcoal-navy, not pure black */
+  --color-paper: #0a0b10;
+  --color-card: #14161f;
+  --color-well: #1c1f2b;
 
-  /* Ink stack */
-  --color-ink: #211d14;
-  --color-ink-soft: #6b6353;
-  --color-ink-faint: #9a927e;
-  --color-line: #d8d0ba;
+  /* Text stack */
+  --color-ink: #f3f4f7;
+  --color-ink-soft: #9aa0b2;
+  --color-ink-faint: #5f6577;
+  --color-line: #262a38;
 
-  /* Signal inks */
-  --color-crimson: #b23a30;
-  --color-crimson-deep: #8e2b22;
-  --color-crimson-wash: #f3e0dc;
-  --color-verdant: #2f6e4b;
-  --color-verdant-wash: #e2ecdd;
-  --color-brass: #96762a;
-  --color-brass-wash: #f0e8d0;
-  --color-azure: #35568c;
-  --color-azure-wash: #e3e9f3;
+  /* Signal colors — reserved for real semantic meaning, not decoration */
+  --color-crimson: #fb4d67;
+  --color-crimson-deep: #ff2f55;
+  --color-crimson-wash: rgba(251, 77, 103, 0.14);
+  --color-verdant: #34d399;
+  --color-verdant-wash: rgba(52, 211, 153, 0.14);
+  --color-brass: #fbbf24;
+  --color-brass-wash: rgba(251, 191, 36, 0.14);
+  --color-azure: #60a5fa;
+  --color-azure-wash: rgba(96, 165, 250, 0.14);
 
-  --font-display: "Fraunces", "Iowan Old Style", Georgia, serif;
+  /* Brand accent — the one color that means "GhostTrace", not "alarm" */
+  --color-violet: #8b6bf2;
+  --color-violet-deep: #a78bfa;
+  --color-violet-wash: rgba(139, 107, 242, 0.14);
+
+  --font-display: -apple-system, "SF Pro Display", "Inter", "Segoe UI", ui-sans-serif, sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
 
 :root {
-  color-scheme: light;
+  color-scheme: dark;
 }
 
 html, body, #root {
@@ -85,20 +76,20 @@ html, body, #root {
 }
 
 body {
-  background-color: #f2eee3;
-  color: #211d14;
-  font-family: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  background-color: #0a0b10;
+  color: #f3f4f7;
+  font-family: -apple-system, "SF Pro Text", "Inter", "Segoe UI", ui-sans-serif, sans-serif;
   font-size: 14px;
   -webkit-font-smoothing: antialiased;
-  /* Faint paper grain */
   background-image:
-    radial-gradient(rgba(33, 29, 20, 0.028) 1px, transparent 1px);
-  background-size: 5px 5px;
+    radial-gradient(ellipse 900px 500px at 15% -10%, rgba(139, 107, 242, 0.10), transparent 60%),
+    radial-gradient(ellipse 700px 500px at 100% 0%, rgba(251, 77, 103, 0.06), transparent 55%);
+  background-repeat: no-repeat;
 }
 
 ::selection {
-  background: #b23a30;
-  color: #f2eee3;
+  background: #8b6bf2;
+  color: #f3f4f7;
 }
 
 ::-webkit-scrollbar {
@@ -106,97 +97,78 @@ body {
   height: 10px;
 }
 ::-webkit-scrollbar-track {
-  background: #e9e3d1;
+  background: #14161f;
 }
 ::-webkit-scrollbar-thumb {
-  background: #c9c0a7;
+  background: #2c3040;
   border-radius: 8px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #b0a68a;
+  background: #3a3f54;
 }
 
-/* --- Case-file motifs ------------------------------------------------ */
+/* --- Guardian motifs ---------------------------------------------- */
 
-/* Rubber stamp: bordered, inked, slightly imperfect */
-.stamp {
+/* Status/label pill — quiet, rounded, glow only when it means alarm */
+.pill {
   display: inline-flex;
   align-items: center;
   gap: 0.4em;
-  border: 2px solid currentColor;
-  border-radius: 3px;
-  padding: 0.15rem 0.5rem;
+  border: 1px solid transparent;
+  border-radius: 999px;
+  padding: 0.2rem 0.65rem;
   font-family: var(--font-mono);
   font-weight: 600;
   font-size: 11px;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   line-height: 1.4;
-  -webkit-mask-image: radial-gradient(circle at 30% 60%, black 96%, rgba(0,0,0,0.72) 100%);
-          mask-image: radial-gradient(circle at 30% 60%, black 96%, rgba(0,0,0,0.72) 100%);
 }
 
-.stamp-tilt {
-  transform: rotate(-4deg);
+/* Card surface: soft border, soft shadow, gentle radius */
+.card-surface {
+  background: var(--color-card);
+  border: 1px solid var(--color-line);
+  border-radius: 16px;
 }
 
-/* Letterhead double rule (thick over thin) */
-.rule-double {
-  border-bottom: 3px solid #211d14;
-  position: relative;
-}
-.rule-double::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: -6px;
-  border-bottom: 1px solid #211d14;
-}
-
-/* Dotted ledger leader between label and value */
-.ledger-row {
-  display: flex;
-  align-items: center;
-  gap: 0.75rem;
-}
-.ledger-dots {
-  flex: 1;
-  border-bottom: 2px dotted #c9c0a7;
-  transform: translateY(-4px);
-  min-width: 1.5rem;
+/* Glassy sticky header */
+.glass {
+  background: rgba(10, 11, 16, 0.82);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
 }
 
 /* --- Motion ---------------------------------------------------------- */
 
-/* Attention pulse for newly-detected cases (crimson ink ring) */
+/* Attention pulse for newly-detected threats (crimson glow ring) */
 @keyframes ghost-pulse {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(178, 58, 48, 0.45); }
-  50% { box-shadow: 0 0 0 6px rgba(178, 58, 48, 0); }
+  0%, 100% { box-shadow: 0 0 0 0 rgba(251, 77, 103, 0.35); }
+  50% { box-shadow: 0 0 0 8px rgba(251, 77, 103, 0); }
 }
 .animate-ghost-pulse {
-  animation: ghost-pulse 1.8s ease-out infinite;
+  animation: ghost-pulse 2s ease-out infinite;
 }
 
 @keyframes nuke-shake {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  20% { transform: translate(-2px, 1px) rotate(-0.6deg); }
-  40% { transform: translate(2px, -1px) rotate(0.6deg); }
-  60% { transform: translate(-2px, -1px) rotate(0deg); }
-  80% { transform: translate(2px, 1px) rotate(0.6deg); }
+  0%, 100% { transform: translate(0, 0); }
+  20% { transform: translate(-2px, 1px); }
+  40% { transform: translate(2px, -1px); }
+  60% { transform: translate(-2px, -1px); }
+  80% { transform: translate(2px, 1px); }
 }
 .animate-nuke-shake {
   animation: nuke-shake 0.4s ease-in-out infinite;
 }
 
-/* Rubber stamp slamming down onto paper */
+/* Filed confirmation popping in */
 @keyframes stamp-in {
-  0% { transform: scale(2.1) rotate(-16deg); opacity: 0; }
-  55% { transform: scale(0.94) rotate(-5deg); opacity: 1; }
-  100% { transform: scale(1) rotate(-6deg); opacity: 1; }
+  0% { transform: scale(0.5); opacity: 0; }
+  70% { transform: scale(1.08); opacity: 1; }
+  100% { transform: scale(1); opacity: 1; }
 }
 .animate-stamp-in {
-  animation: stamp-in 0.45s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
+  animation: stamp-in 0.35s cubic-bezier(0.2, 0.9, 0.3, 1.2) forwards;
   opacity: 0;
 }
 
@@ -209,34 +181,35 @@ body {
 }
 
 @keyframes fade-in {
-  0% { opacity: 0; }
-  100% { opacity: 1; }
+  0% { opacity: 0; transform: translateY(4px); }
+  100% { opacity: 1; transform: translateY(0); }
 }
 .animate-fade-in {
   animation: fade-in 0.35s ease-out forwards;
 }
 
-/* Expanding ink ring for the one-shot filing success moment */
+/* Expanding ring for the one-shot filing success moment */
 @keyframes success-ring {
-  0% { transform: scale(0.9); opacity: 0.5; }
-  100% { transform: scale(2.4); opacity: 0; }
+  0% { transform: scale(0.92); opacity: 0.6; }
+  100% { transform: scale(2.2); opacity: 0; }
 }
 .animate-success-ring {
   animation: success-ring 1.2s ease-out forwards;
 }
 
-/* Shimmer skeleton on paper */
+/* Shimmer skeleton on dark surface */
 @keyframes ghost-shimmer {
   0% { background-position: -200% 0; }
   100% { background-position: 200% 0; }
 }
 .skeleton {
-  background-color: #e9e3d1;
+  background-color: #1c1f2b;
+  border-radius: 12px;
   background-image: linear-gradient(
     90deg,
-    rgba(33, 29, 20, 0) 25%,
-    rgba(33, 29, 20, 0.06) 50%,
-    rgba(33, 29, 20, 0) 75%
+    rgba(255, 255, 255, 0) 25%,
+    rgba(255, 255, 255, 0.06) 50%,
+    rgba(255, 255, 255, 0) 75%
   );
   background-size: 200% 100%;
   animation: ghost-shimmer 1.6s ease-in-out infinite;

@@ -1,4 +1,4 @@
-import { Stamp, CheckCircle2 } from "lucide-react";
+import { ShieldAlert, CheckCircle2 } from "lucide-react";
 import Spinner from "./Spinner";
 
 interface Props {
@@ -13,10 +13,10 @@ export default function NukeButton({ onClick, disabled, nuking, alreadyFiled }: 
     <button
       onClick={onClick}
       disabled={disabled || nuking || alreadyFiled}
-      className={`group relative flex w-full cursor-pointer items-center justify-center gap-3 border-3 border-double px-6 py-5 font-mono text-base font-bold uppercase tracking-[0.2em] transition-all duration-150 disabled:cursor-not-allowed ${
+      className={`group relative flex w-full cursor-pointer items-center justify-center gap-3 rounded-2xl px-6 py-5 font-display text-base font-bold uppercase tracking-[0.14em] transition-all duration-150 disabled:cursor-not-allowed ${
         alreadyFiled
-          ? "border-verdant bg-verdant-wash text-verdant"
-          : "border-crimson-deep bg-crimson text-card shadow-[4px_4px_0_0_#211d14] hover:-translate-x-0.5 hover:-translate-y-0.5 hover:shadow-[6px_6px_0_0_#211d14] active:translate-x-0.5 active:translate-y-0.5 active:shadow-[1px_1px_0_0_#211d14]"
+          ? "border border-verdant/40 bg-verdant-wash text-verdant"
+          : "bg-crimson text-white shadow-[0_0_0_1px_rgba(251,77,103,0.4),0_8px_30px_-8px_rgba(251,77,103,0.55)] hover:shadow-[0_0_0_1px_rgba(251,77,103,0.5),0_10px_36px_-6px_rgba(251,77,103,0.7)] hover:brightness-110 active:brightness-95"
       } ${nuking ? "animate-nuke-shake" : ""}`}
     >
       {alreadyFiled ? (
@@ -30,7 +30,7 @@ export default function NukeButton({ onClick, disabled, nuking, alreadyFiled }: 
         </>
       ) : (
         <>
-          <Stamp className="h-5 w-5" /> File DMCA — Everywhere
+          <ShieldAlert className="h-5 w-5" /> File DMCA — Everywhere
         </>
       )}
     </button>

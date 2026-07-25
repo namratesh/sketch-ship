@@ -9,12 +9,11 @@ interface Props {
   delayMs?: number;
 }
 
-/* A filing receipt per platform; the FILED stamp slams down when filed. */
 export default function PlatformFlipCard({ platform, filed, justFiled, filedAt, delayMs = 0 }: Props) {
   return (
     <div
-      className={`border p-4 text-center transition-colors duration-300 ${
-        filed ? "border-verdant/50 bg-verdant-wash/60" : "border-line bg-card"
+      className={`rounded-2xl border p-4 text-center transition-colors duration-300 ${
+        filed ? "border-verdant/40 bg-verdant-wash/60" : "border-line bg-card"
       }`}
     >
       <div className="flex flex-col items-center gap-2.5">
@@ -22,7 +21,7 @@ export default function PlatformFlipCard({ platform, filed, justFiled, filedAt, 
         {filed ? (
           <>
             <span
-              className={`stamp text-sm text-verdant ${justFiled ? "animate-stamp-in" : "stamp-tilt"}`}
+              className={`pill bg-verdant-wash text-sm text-verdant ${justFiled ? "animate-stamp-in" : ""}`}
               style={justFiled ? { animationDelay: `${delayMs}ms` } : undefined}
             >
               Filed
