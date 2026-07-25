@@ -54,8 +54,8 @@ def run_scan() -> dict:
         if leak_web_path in already_incidented_paths:
             continue  # this leak was already turned into an incident in a prior scan
 
-        leak_fs_path = os.path.join(storage.SEED_LEAKS_DIR, leak["leak_filename"])
-        if not os.path.exists(leak_fs_path):
+        leak_bytes = storage.read_image_bytes("seed_leaks", leak["leak_filename"])
+        if leak_bytes is None:
             continue
 
         # Compare against every asset and keep the best-scoring match rather
@@ -66,11 +66,11 @@ def run_scan() -> dict:
         best_result = None
         for asset in db.get("assets", []):
             asset_filename = os.path.basename(asset["path"])
-            asset_fs_path = os.path.join(storage.UPLOADS_DIR, asset_filename)
-            if not os.path.exists(asset_fs_path):
+            asset_bytes = storage.read_image_bytes("uploads", asset_filename)
+            if asset_bytes is None:
                 continue
 
-            result = compare_images(asset_fs_path, leak_fs_path)
+            result = compare_images(asset_bytes, leak_bytes)
             if best_result is None or result.similarity_score > best_result.similarity_score:
                 best_asset = asset
                 best_result = result
@@ -124,16 +124,11 @@ def run_web_scan(asset_id: str) -> dict:
     if asset_dict is None:
         raise HTTPException(status_code=404, detail="Asset not found")
 
-    asset_filename = os.path.basename(asset_dict["path"])
-    asset_fs_path = os.path.join(storage.UPLOADS_DIR, asset_filename)
-    if not os.path.exists(asset_fs_path):
-        raise HTTPException(status_code=404, detail="Asset file missing on disk")
-
     already_matched_urls = {
         inc["leak_url"] for inc in db.get("incidents", []) if inc["asset_id"] == asset_id
     }
 
-    matches = web_detect(asset_fs_path)
+    matches = web_detect(asset_dict["path"])
 
     new_incidents: list[Incident] = []
     for match in matches:
@@ -141,19 +136,18 @@ def run_web_scan(asset_id: str) -> dict:
         if leak_url in already_matched_urls:
             continue  # already have an incident for this exact page/image
 
-        storage.ensure_dirs()
         leak_id = new_id()
         leak_filename = f"{leak_id}_web.jpg"
-        leak_fs_path = os.path.join(storage.SEED_LEAKS_DIR, leak_filename)
-        downloaded = download_image(match.image_url, leak_fs_path)
-        if not downloaded:
+        downloaded = download_image(match.image_url)
+        if downloaded is None:
             continue  # can't render a match we couldn't fetch -- skip rather than show a broken image
+        leak_path = storage.write_image_bytes("seed_leaks", leak_filename, downloaded, "image/jpeg")
 
         incident = Incident(
             id=new_id(),
             asset_id=asset_id,
             platform=match.platform_label(),
-            leak_image_path=f"/seed_leaks/{leak_filename}",
+            leak_image_path=leak_path,
             leak_url=leak_url,
             similarity_score=int(match.score),
             reasoning=f"Real match found via SerpApi Google Lens reverse image search ({match.match_type} match).",

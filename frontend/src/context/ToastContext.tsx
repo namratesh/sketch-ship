@@ -5,18 +5,25 @@ import {
   useState,
   type ReactNode,
 } from "react";
-import { CheckCircle2, CircleAlert, Info, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { CheckCircle2, CircleAlert, Info, X, ArrowRight } from "lucide-react";
 
 export type ToastKind = "success" | "error" | "info";
+
+export interface ToastOptions {
+  /** In-app route to navigate to when the toast body is clicked. */
+  to?: string;
+}
 
 export interface ToastItem {
   id: string;
   kind: ToastKind;
   message: string;
+  to?: string;
 }
 
 interface ToastContextValue {
-  showToast: (message: string, kind?: ToastKind) => void;
+  showToast: (message: string, kind?: ToastKind, options?: ToastOptions) => void;
 }
 
 const ToastContext = createContext<ToastContextValue | null>(null);
@@ -45,15 +52,16 @@ function accentClasses(kind: ToastKind) {
 
 export function ToastProvider({ children }: { children: ReactNode }) {
   const [toasts, setToasts] = useState<ToastItem[]>([]);
+  const navigate = useNavigate();
 
   const dismiss = useCallback((id: string) => {
     setToasts((prev) => prev.filter((t) => t.id !== id));
   }, []);
 
   const showToast = useCallback(
-    (message: string, kind: ToastKind = "info") => {
+    (message: string, kind: ToastKind = "info", options?: ToastOptions) => {
       const id = `${Date.now()}-${Math.random().toString(36).slice(2)}`;
-      setToasts((prev) => [...prev, { id, kind, message }]);
+      setToasts((prev) => [...prev, { id, kind, message, to: options?.to }]);
       window.setTimeout(() => dismiss(id), 5000);
     },
     [dismiss]
@@ -74,10 +82,26 @@ export function ToastProvider({ children }: { children: ReactNode }) {
             <span className="mt-0.5 flex h-5 w-5 shrink-0 items-center justify-center">
               <Icon kind={t.kind} />
             </span>
-            <p className="text-xs leading-relaxed text-ink">{t.message}</p>
+            {t.to ? (
+              <button
+                type="button"
+                onClick={() => {
+                  dismiss(t.id);
+                  navigate(t.to!);
+                }}
+                className="group flex flex-1 cursor-pointer items-center gap-1.5 text-left"
+              >
+                <p className="text-xs leading-relaxed text-ink underline-offset-2 group-hover:underline">
+                  {t.message}
+                </p>
+                <ArrowRight className="h-3 w-3 shrink-0 text-ink-faint transition group-hover:translate-x-0.5 group-hover:text-violet-deep" />
+              </button>
+            ) : (
+              <p className="flex-1 text-xs leading-relaxed text-ink">{t.message}</p>
+            )}
             <button
               onClick={() => dismiss(t.id)}
-              className="ml-auto cursor-pointer text-ink-faint hover:text-ink"
+              className="ml-auto shrink-0 cursor-pointer text-ink-faint hover:text-ink"
               aria-label="Dismiss"
             >
               <X className="h-4 w-4" />

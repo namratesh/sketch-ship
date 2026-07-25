@@ -223,7 +223,7 @@ export default function IncidentRoom() {
           ← All cases
         </Link>
         <div className="mt-3 flex flex-wrap items-center gap-3">
-          <h1 className="font-display text-4xl font-bold tracking-tight text-ink">
+          <h1 className="font-display text-4xl font-bold tracking-tight text-gradient">
             Case {caseNo(incident.id)}
           </h1>
           <PlatformBadge platform={incident.platform} />

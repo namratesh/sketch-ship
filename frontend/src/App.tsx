@@ -5,6 +5,7 @@ import { AppStatusProvider } from "./context/AppStatusContext";
 import NavBar from "./components/NavBar";
 import ErrorBanner from "./components/ErrorBanner";
 import Spinner from "./components/Spinner";
+import Login from "./pages/Login";
 import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import Assets from "./pages/Assets";
@@ -12,15 +13,23 @@ import Incidents from "./pages/Incidents";
 import IncidentRoom from "./pages/IncidentRoom";
 import Activity from "./pages/Activity";
 
+const AUTH_KEY = "ghosttrace_authed";
+
 type ProfileState =
   | { status: "loading" }
   | { status: "ready"; profile: CreatorProfile | null }
   | { status: "error"; message: string };
 
 function AppShell() {
+  const [authed, setAuthed] = useState(() => localStorage.getItem(AUTH_KEY) === "true");
   const [profileState, setProfileState] = useState<ProfileState>({ status: "loading" });
   const location = useLocation();
   const navigate = useNavigate();
+
+  const logout = useCallback(() => {
+    localStorage.removeItem(AUTH_KEY);
+    setAuthed(false);
+  }, []);
 
   const loadProfile = useCallback(() => {
     setProfileState({ status: "loading" });
@@ -35,8 +44,9 @@ function AppShell() {
   }, []);
 
   useEffect(() => {
+    if (!authed) return;
     loadProfile();
-  }, [loadProfile]);
+  }, [authed, loadProfile]);
 
   useEffect(() => {
     if (
@@ -50,9 +60,24 @@ function AppShell() {
 
   const hasProfile = profileState.status === "ready" ? !!profileState.profile : null;
 
+  if (!authed) {
+    return (
+      <div className="min-h-screen">
+        <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
+          <Login
+            onLogin={() => {
+              localStorage.setItem(AUTH_KEY, "true");
+              setAuthed(true);
+            }}
+          />
+        </main>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen">
-      <NavBar hasProfile={hasProfile} />
+      <NavBar hasProfile={hasProfile} onLogout={logout} />
       <main className="mx-auto max-w-6xl px-4 py-8 sm:px-6 lg:px-8">
         {profileState.status === "error" && (
           <div className="mb-6">
@@ -69,25 +94,27 @@ function AppShell() {
             Loading GhostTrace…
           </div>
         ) : (
-          <Routes>
-            <Route
-              path="/onboarding"
-              element={
-                <Onboarding
-                  onDone={() => {
-                    loadProfile();
-                    navigate("/");
-                  }}
-                />
-              }
-            />
-            <Route path="/" element={<Dashboard />} />
-            <Route path="/assets" element={<Assets />} />
-            <Route path="/incidents" element={<Incidents />} />
-            <Route path="/incidents/:id" element={<IncidentRoom />} />
-            <Route path="/activity" element={<Activity />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+          <div key={location.pathname} className="animate-page-in">
+            <Routes>
+              <Route
+                path="/onboarding"
+                element={
+                  <Onboarding
+                    onDone={() => {
+                      loadProfile();
+                      navigate("/");
+                    }}
+                  />
+                }
+              />
+              <Route path="/" element={<Dashboard />} />
+              <Route path="/assets" element={<Assets />} />
+              <Route path="/incidents" element={<Incidents />} />
+              <Route path="/incidents/:id" element={<IncidentRoom />} />
+              <Route path="/activity" element={<Activity />} />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </div>
         )}
       </main>
     </div>

@@ -9,14 +9,14 @@ platform. This gives Gemini real pixel differences to reason about during
 """
 from __future__ import annotations
 
-import json
+import io
 import random
 from typing import Any
 
 from PIL import Image, ImageDraw, ImageFont
 
 from . import storage
-from .utils import new_id, now_iso, sha256_of_file
+from .utils import new_id, now_iso, sha256_of_bytes
 
 PLATFORMS = ["YouTube", "X", "Instagram"]
 
@@ -121,20 +121,20 @@ def _make_leak_variant(original: Image.Image) -> Image.Image:
     return out
 
 
-def generate_leak_for_asset(asset_fs_path: str, asset_id: str) -> dict[str, Any]:
+def generate_leak_for_asset(asset_bytes: bytes, asset_id: str) -> dict[str, Any]:
     """Synthesizes one 'leaked' variant of a just-uploaded asset and registers
     it in seed_leaks_meta.json, so the next /scan has a real (if synthetic)
     leak to find for content the user themselves uploaded -- not just the
     3 built-in demo assets from run_seed_if_needed().
     """
-    storage.ensure_dirs()
-    original = Image.open(asset_fs_path).convert("RGB")
+    original = Image.open(io.BytesIO(asset_bytes)).convert("RGB")
 
     leak_id = new_id()
     leak_filename = f"{leak_id}_leak.png"
-    leak_fs_path = f"{storage.SEED_LEAKS_DIR}/{leak_filename}"
     leak_img = _make_leak_variant(original)
-    leak_img.save(leak_fs_path)
+    buf = io.BytesIO()
+    leak_img.save(buf, format="PNG")
+    leak_path = storage.write_image_bytes("seed_leaks", leak_filename, buf.getvalue())
 
     platform = random.choice(PLATFORMS)
     slug = leak_id[:8]
@@ -142,7 +142,7 @@ def generate_leak_for_asset(asset_fs_path: str, asset_id: str) -> dict[str, Any]
 
     entry = {
         "leak_filename": leak_filename,
-        "leak_path": f"/seed_leaks/{leak_filename}",
+        "leak_path": leak_path,
         "source_asset_id": asset_id,
         "platform": platform,
         "leak_url": leak_url,
@@ -151,9 +151,13 @@ def generate_leak_for_asset(asset_fs_path: str, asset_id: str) -> dict[str, Any]
     return entry
 
 
-def run_seed_if_needed() -> None:
-    storage.ensure_dirs()
+def _image_bytes(img: Image.Image) -> bytes:
+    buf = io.BytesIO()
+    img.save(buf, format="PNG")
+    return buf.getvalue()
 
+
+def run_seed_if_needed() -> None:
     if storage.db_exists():
         print("[seed] db.json already present — skipping demo data generation")
         return
@@ -164,22 +168,22 @@ def run_seed_if_needed() -> None:
     db["assets"] = []
     db["activity"] = []
 
-    seed_leaks_meta: list[dict] = []
+    n_leaks_total = 0
 
     for idx, spec in enumerate(DEMO_SPECS):
         asset_id = new_id()
         filename = f"{asset_id}_original.png"
-        path = f"{storage.UPLOADS_DIR}/{filename}"
 
         img = _make_original_image(spec)
-        img.save(path)
+        img_bytes = _image_bytes(img)
+        path = storage.write_image_bytes("uploads", filename, img_bytes)
 
         asset = {
             "id": asset_id,
             "filename": filename,
-            "sha256": sha256_of_file(path),
+            "sha256": sha256_of_bytes(img_bytes),
             "uploaded_at": now_iso(),
-            "path": f"/uploads/{filename}",
+            "path": path,
             "fingerprint": None,
         }
         db["assets"].append(asset)
@@ -188,30 +192,27 @@ def run_seed_if_needed() -> None:
         for _ in range(n_leaks):
             leak_id = new_id()
             leak_filename = f"{leak_id}_leak.png"
-            leak_path = f"{storage.SEED_LEAKS_DIR}/{leak_filename}"
             leak_img = _make_leak_variant(img)
-            leak_img.save(leak_path)
+            leak_path = storage.write_image_bytes("seed_leaks", leak_filename, _image_bytes(leak_img))
 
             platform = random.choice(PLATFORMS)
             slug = leak_id[:8]
             leak_url = FAKE_URL_BUILDERS[platform](slug)
 
-            seed_leaks_meta.append(
+            storage.append_seed_leak(
                 {
                     "leak_filename": leak_filename,
-                    "leak_path": f"/seed_leaks/{leak_filename}",
+                    "leak_path": leak_path,
                     "source_asset_id": asset_id,
                     "platform": platform,
                     "leak_url": leak_url,
                 }
             )
+            n_leaks_total += 1
 
     storage.write_db(db)
 
-    with open(storage.SEED_LEAKS_META_PATH, "w", encoding="utf-8") as f:
-        json.dump(seed_leaks_meta, f, indent=2)
-
     print(
         f"[seed] generated {len(db['assets'])} original assets and "
-        f"{len(seed_leaks_meta)} seed leak images"
+        f"{n_leaks_total} seed leak images"
     )

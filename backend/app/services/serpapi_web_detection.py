@@ -3,7 +3,9 @@ replacement for Google Cloud Vision's Web Detection (which needs a billed GCP
 project). SERPAPI_KEY comes from a SerpApi account's free trial credit.
 
 Unlike Vision (which accepts raw image bytes), Google Lens needs a URL it can
-fetch itself, so the asset must be reachable at PUBLIC_BASE_URL + /uploads/...
+fetch itself. When object storage is configured (see object_storage.py),
+asset paths are already public bucket URLs and get used as-is. Otherwise
+(local disk mode) the asset must be reachable at PUBLIC_BASE_URL + /uploads/...
 -- either an ngrok tunnel (`ngrok http 8000`, then set PUBLIC_BASE_URL to the
 printed https URL) or a real public deployment of this backend. Defaults to
 http://localhost:8000, which only works if SerpApi's servers can reach that
@@ -58,11 +60,15 @@ def _public_base_url() -> str:
     return os.environ.get("PUBLIC_BASE_URL", "http://localhost:8000").rstrip("/")
 
 
-def web_detect(image_path: str, max_results: int = 8) -> list[WebMatch]:
-    """Calls SerpApi's Google Lens engine on a local image file, by first
+def web_detect(asset_path: str, max_results: int = 8) -> list[WebMatch]:
+    """Calls SerpApi's Google Lens engine on an already-stored asset, by
     turning it into a publicly-fetchable URL (see module docstring).
 
-    Returns [] (never raises) if no API key is configured, PUBLIC_BASE_URL
+    `asset_path` is the asset's stored `path` value: already an absolute
+    public URL in object-storage mode, or a local `/uploads/...`-style path
+    that needs PUBLIC_BASE_URL prefixed in local-disk mode.
+
+    Returns [] (never raises) if no API key is configured, the image URL
     isn't actually reachable from the internet, or the call otherwise fails --
     callers should treat that as "no real matches found," matching the
     fail-soft convention used elsewhere in this codebase.
@@ -72,8 +78,7 @@ def web_detect(image_path: str, max_results: int = 8) -> list[WebMatch]:
         print("[serpapi_web_detection] no SERPAPI_KEY set -- skipping real web search")
         return []
 
-    image_filename = os.path.basename(image_path)
-    image_url = f"{_public_base_url()}/uploads/{image_filename}"
+    image_url = asset_path if asset_path.startswith("http") else f"{_public_base_url()}{asset_path}"
 
     try:
         params = {
@@ -106,27 +111,23 @@ def web_detect(image_path: str, max_results: int = 8) -> list[WebMatch]:
             score = max(95 - i * 7, 40)
             matches.append(WebMatch(match_image_url, page_url, "partial", score=float(score)))
 
-        print(f"[serpapi_web_detection] LIVE ok for {image_path!r} -> {len(matches)} match(es)")
+        print(f"[serpapi_web_detection] LIVE ok for {image_url!r} -> {len(matches)} match(es)")
         return matches
 
     except Exception as exc:  # noqa: BLE001 - must never crash the demo
-        print(f"[serpapi_web_detection] FALLBACK/error (reason: {exc!r}) for {image_path!r}")
+        print(f"[serpapi_web_detection] FALLBACK/error (reason: {exc!r}) for {image_url!r}")
         return []
 
 
-def download_image(url: str, dest_path: str) -> bool:
-    """Best-effort download of a matched image so the frontend's existing
-    seedLeakUrl() rendering (which expects a locally-served file) works
-    unchanged for real matches too. Returns False on any failure -- many
+def download_image(url: str) -> bytes | None:
+    """Best-effort download of a matched image's bytes, so callers can persist
+    it via storage.write_image_bytes(). Returns None on any failure -- many
     sites block hotlinking/scraping, so callers must treat this as optional.
     """
     try:
         req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0 (GhostTrace demo)"})
         with urllib.request.urlopen(req, timeout=10) as resp:
-            data = resp.read()
-        with open(dest_path, "wb") as f:
-            f.write(data)
-        return True
+            return resp.read()
     except (urllib.error.URLError, urllib.error.HTTPError, OSError, TimeoutError) as exc:
         print(f"[serpapi_web_detection] download_image failed for {url!r}: {exc!r}")
-        return False
+        return None

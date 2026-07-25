@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import os
+
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from fastapi.staticfiles import StaticFiles
@@ -10,9 +12,14 @@ from .seed import run_seed_if_needed
 
 app = FastAPI(title="GhostTrace API")
 
+# Extra origins (e.g. the deployed Vercel frontend) can be added via
+# ALLOWED_ORIGINS without a code change -- localhost:5173 always stays
+# allowed for local dev.
+_extra_origins = [o.strip() for o in os.environ.get("ALLOWED_ORIGINS", "").split(",") if o.strip()]
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["http://localhost:5173"],
+    allow_origins=["http://localhost:5173", *_extra_origins],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],

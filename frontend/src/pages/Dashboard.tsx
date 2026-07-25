@@ -77,7 +77,7 @@ export default function Dashboard() {
               Protection status ·{" "}
               {new Date().toLocaleDateString(undefined, { dateStyle: "long" })}
             </p>
-            <h1 className="mt-1 font-display text-4xl font-bold tracking-tight text-ink">
+            <h1 className="mt-1 font-display text-4xl font-bold tracking-tight text-gradient">
               Your content, watched.
             </h1>
           </div>

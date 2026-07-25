@@ -28,20 +28,16 @@ async def upload_asset(file: UploadFile = File(...)) -> Asset:
     _, ext = os.path.splitext(file.filename or "")
     ext = ext if ext else ".png"
     stored_filename = f"{asset_id}{ext}"
-    stored_path = os.path.join(storage.UPLOADS_DIR, stored_filename)
+    stored_path = storage.write_image_bytes("uploads", stored_filename, contents)
 
-    storage.ensure_dirs()
-    with open(stored_path, "wb") as f:
-        f.write(contents)
-
-    fingerprint: AssetFingerprint = describe_asset(stored_path)
+    fingerprint: AssetFingerprint = describe_asset(contents)
 
     asset = Asset(
         id=asset_id,
         filename=file.filename or stored_filename,
         sha256=sha256,
         uploaded_at=now_iso(),
-        path=f"/uploads/{stored_filename}",
+        path=stored_path,
         fingerprint=fingerprint,
     )
 
@@ -58,6 +54,6 @@ async def upload_asset(file: UploadFile = File(...)) -> Asset:
     # Synthesize one "leaked" variant of this asset so a subsequent /scan has
     # something of the user's own content to find, not just the 3 built-in
     # demo assets seeded on first boot.
-    generate_leak_for_asset(stored_path, asset_id)
+    generate_leak_for_asset(contents, asset_id)
 
     return asset

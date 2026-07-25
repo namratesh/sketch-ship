@@ -90,7 +90,8 @@ export default function Assets() {
       if (result.new_incidents.length > 0) {
         showToast(
           `Real web search found ${result.new_incidents.length} match(es) for "${asset.filename}".`,
-          "success"
+          "success",
+          { to: `/incidents?asset=${asset.id}` }
         );
       } else if (result.raw_match_count > 0) {
         showToast(`Google found ${result.raw_match_count} candidate(s) but none were downloadable.`, "error");
@@ -114,7 +115,7 @@ export default function Assets() {
         <p className="text-[11px] font-semibold uppercase tracking-[0.2em] text-violet-deep">
           Original works under protection
         </p>
-        <h1 className="mt-1 font-display text-4xl font-bold tracking-tight text-ink">Exhibits</h1>
+        <h1 className="mt-1 font-display text-4xl font-bold tracking-tight text-gradient">Exhibits</h1>
         <p className="mt-2 max-w-2xl text-xs leading-relaxed text-ink-soft">
           Every submission is fingerprinted (SHA-256 + a Gemini-generated visual description)
           so GhostTrace can recognize your work anywhere it turns up.

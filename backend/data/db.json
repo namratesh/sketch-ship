@@ -1,9 +1,9 @@
 {
   "profile": {
-    "name": "NAMRATESH SHRIVASTAV",
-    "email": "namra@gmail.com",
-    "address": "tower e",
-    "phone": "9989876678"
+    "name": "Jordan Vale",
+    "email": "jordan.vale@creatormail.com",
+    "address": "221B Creator Lane, Los Angeles, CA 90028, USA",
+    "phone": "+1 (555) 019-4477"
   },
   "assets": [
     {
@@ -192,6 +192,71 @@
           "Dark red bold sans-serif typeface",
           "Plain light gray/off-white solid background",
           "Lowercase 'just an' positioned above capitalized 'Example'"
+        ]
+      }
+    },
+    {
+      "id": "e51aec2c3ca74151bfab7f29f2e61e3c",
+      "filename": "Example.jpg",
+      "sha256": "99bd915a3819b1fee3722328ae904dde5459e9b15d56abd98b903c770a2f582c",
+      "uploaded_at": "2026-07-25T08:48:40.341637+00:00",
+      "path": "/uploads/e51aec2c3ca74151bfab7f29f2e61e3c.jpg",
+      "fingerprint": {
+        "subject": "Diagonal text reading 'just an Example'",
+        "dominant_colors": [
+          "dark red",
+          "light gray"
+        ],
+        "distinguishing_features": [
+          "Text reading 'just an Example'",
+          "Text set at a diagonal angle",
+          "'just an' in lowercase above 'Example'",
+          "Bold sans-serif typeface",
+          "Plain off-white background"
+        ]
+      }
+    },
+    {
+      "id": "e982d4330e0a42338396e1c196d21ee3",
+      "filename": "2_c45uNSgO8yIDF7psLBBzAg.webp",
+      "sha256": "473f0888a91b88b4c43b68bb3f7bb8589436644c176bf533996af73a2ea3b397",
+      "uploaded_at": "2026-07-25T08:59:07.076085+00:00",
+      "path": "/uploads/e982d4330e0a42338396e1c196d21ee3.webp",
+      "fingerprint": {
+        "subject": "Portrait of a young man outdoors wearing a graphic t-shirt and open light jacket",
+        "dominant_colors": [
+          "white",
+          "light green",
+          "black",
+          "brown"
+        ],
+        "distinguishing_features": [
+          "Dark short hair swept forward",
+          "Slight stubble and subtle mustache",
+          "White t-shirt with red graphic lettering reading 'on Whe'",
+          "Unbuttoned light mint green outer shirt",
+          "Softly blurred outdoor park background with bright lighting"
+        ]
+      }
+    },
+    {
+      "id": "a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "filename": "Example.jpg",
+      "sha256": "99bd915a3819b1fee3722328ae904dde5459e9b15d56abd98b903c770a2f582c",
+      "uploaded_at": "2026-07-25T09:10:25.283994+00:00",
+      "path": "/uploads/a4bc9c9958fa4eb3a9aeaa5186cb6513.jpg",
+      "fingerprint": {
+        "subject": "Diagonally rotated red text displaying 'just an Example'",
+        "dominant_colors": [
+          "Red",
+          "Light Grey"
+        ],
+        "distinguishing_features": [
+          "Bold dark red sans-serif typography",
+          "Text rotated diagonally at roughly 45 degrees",
+          "Words 'just an' positioned above 'Example'",
+          "Capitalized 'Example' in large font",
+          "Plain light grey square background"
         ]
       }
     }
@@ -396,6 +461,342 @@
       "status": "DETECTED",
       "detected_at": "2026-07-25T07:56:45.905022+00:00",
       "source": "SERPAPI"
+    },
+    {
+      "id": "9450e0bc1b4b4dec9452d3b540b1479e",
+      "asset_id": "e51aec2c3ca74151bfab7f29f2e61e3c",
+      "platform": "commons.wikimedia.org",
+      "leak_image_path": "/seed_leaks/321cf81564c24656944d27cb8a0f8736_web.jpg",
+      "leak_url": "https://commons.wikimedia.org/wiki/File:Example_en.svg",
+      "similarity_score": 95,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:48:45.801967+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "d1163251df0c4353b608af1fdeee38b2",
+      "asset_id": "e51aec2c3ca74151bfab7f29f2e61e3c",
+      "platform": "www.reddit.com",
+      "leak_image_path": "/seed_leaks/616557089be6448d9240e06074fdd236_web.jpg",
+      "leak_url": "https://www.reddit.com/r/help/comments/1ucd7qk/images_wont_show_on_feed_when_using_the_new/",
+      "similarity_score": 88,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:48:45.947606+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "edc3d6374523480ba7c3ee3b0df3420b",
+      "asset_id": "e51aec2c3ca74151bfab7f29f2e61e3c",
+      "platform": "simple.wiktionary.org",
+      "leak_image_path": "/seed_leaks/c3086362587547ef85eb7de5a6781ecd_web.jpg",
+      "leak_url": "https://simple.wiktionary.org/wiki/Help:Images",
+      "similarity_score": 81,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:48:46.276304+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "d2e87a5e6ffa4303b464b3ead21cdb9b",
+      "asset_id": "e51aec2c3ca74151bfab7f29f2e61e3c",
+      "platform": "commons.wikimedia.org",
+      "leak_image_path": "/seed_leaks/6f37543b40ba4dd1854adef1cdcc442d_web.jpg",
+      "leak_url": "https://commons.wikimedia.org/wiki/File:Example_i18n.svg",
+      "similarity_score": 74,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:48:46.816848+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "4f696d64f58b4a9a98de9cbea9f13d3f",
+      "asset_id": "e51aec2c3ca74151bfab7f29f2e61e3c",
+      "platform": "gnu-octave.github.io",
+      "leak_image_path": "/seed_leaks/d5ac41d4feba4f3f8cf678a346989982_web.jpg",
+      "leak_url": "https://gnu-octave.github.io/packages/pkg-example/",
+      "similarity_score": 67,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:48:47.375406+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "7fc70c005e4141ffb943f9ff6b8c91cb",
+      "asset_id": "e51aec2c3ca74151bfab7f29f2e61e3c",
+      "platform": "en.wikipedia.org",
+      "leak_image_path": "/seed_leaks/6e250269860a4fefab64868f745b4d91_web.jpg",
+      "leak_url": "https://en.wikipedia.org/wiki/Template:Infobox/testcases",
+      "similarity_score": 60,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "FILED",
+      "detected_at": "2026-07-25T08:48:47.780633+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "2d9ddb368a7e494296416983a306da55",
+      "asset_id": "e982d4330e0a42338396e1c196d21ee3",
+      "platform": "medium.com",
+      "leak_image_path": "/seed_leaks/e3720e4c4e05412e9134fb5db23abdd0_web.jpg",
+      "leak_url": "https://medium.com/analytics-vidhya/matplotlib-4aa9ee8804fb",
+      "similarity_score": 95,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:59:12.576561+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "20b4f92ebaed4c158cacaa0ba240ac7a",
+      "asset_id": "e982d4330e0a42338396e1c196d21ee3",
+      "platform": "X",
+      "leak_image_path": "/seed_leaks/1486cd50d4e249a0997efd7f9a5160ac_web.jpg",
+      "leak_url": "https://x.com/Farrhad",
+      "similarity_score": 88,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:59:12.707178+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "11d5914762ef47e2a4802bd2ffd74310",
+      "asset_id": "e982d4330e0a42338396e1c196d21ee3",
+      "platform": "in.linkedin.com",
+      "leak_image_path": "/seed_leaks/03f1a63cf6494593a96caf1bce627db6_web.jpg",
+      "leak_url": "https://in.linkedin.com/in/manikanta-javvadi-1b852a238",
+      "similarity_score": 81,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:59:23.070665+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "fdf94c74a8ba4913b8244775e78efd35",
+      "asset_id": "e982d4330e0a42338396e1c196d21ee3",
+      "platform": "in.linkedin.com",
+      "leak_image_path": "/seed_leaks/3552e85509924437abc71e6991f09e62_web.jpg",
+      "leak_url": "https://in.linkedin.com/in/shashidhar-hegde-487a411a4",
+      "similarity_score": 74,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:59:33.829202+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "fbe151ea201442398af9d354dbce4b4c",
+      "asset_id": "e982d4330e0a42338396e1c196d21ee3",
+      "platform": "github.com",
+      "leak_image_path": "/seed_leaks/5df8626d6f124f3fae24410b5118ea65_web.jpg",
+      "leak_url": "https://github.com/karanyede",
+      "similarity_score": 67,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:59:35.077462+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "d44f565f50b74639be258bfb7a72b830",
+      "asset_id": "e982d4330e0a42338396e1c196d21ee3",
+      "platform": "www.superprof.co.nz",
+      "leak_image_path": "/seed_leaks/329b423ea3754665a4792652c6b5e385_web.jpg",
+      "leak_url": "https://www.superprof.co.nz/physics-the-world-realization-and-basically-formulae-come-and-feel.html",
+      "similarity_score": 60,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:59:35.739225+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "76fda17a5f924c6c8969d454066ef1f3",
+      "asset_id": "e982d4330e0a42338396e1c196d21ee3",
+      "platform": "independent.academia.edu",
+      "leak_image_path": "/seed_leaks/d6471749e59f48f58f02630a0c594018_web.jpg",
+      "leak_url": "https://independent.academia.edu/SameerBhalerao",
+      "similarity_score": 53,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:59:36.775855+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "a1a6800b0ab74cdf80b7ab23b8f5df13",
+      "asset_id": "e982d4330e0a42338396e1c196d21ee3",
+      "platform": "rocketreach.co",
+      "leak_image_path": "/seed_leaks/ff4b411e0f3d457ab67c881818e3547e_web.jpg",
+      "leak_url": "https://rocketreach.co/lokesh-talluri-email_370197168",
+      "similarity_score": 46,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T08:59:37.980336+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "84dd53f3e713487d975d94ff3f39bd9a",
+      "asset_id": "9d8c594e7f4243d1a36da9f00c31e850",
+      "platform": "discussions.unity.com",
+      "leak_image_path": "/seed_leaks/0c16b58ae63e4d6cb4ee40c404a983a3_web.jpg",
+      "leak_url": "https://discussions.unity.com/t/anyone-else-having-some-camera-problems-after-building/884240",
+      "similarity_score": 95,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:08:38.127908+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "ad01196831b7489a8482ec6303fffda1",
+      "asset_id": "9d8c594e7f4243d1a36da9f00c31e850",
+      "platform": "YouTube",
+      "leak_image_path": "/seed_leaks/f1d22957018f4f0fab1bd6b5eb32156a_web.jpg",
+      "leak_url": "https://www.youtube.com/watch?v=tzYARQl2aB4",
+      "similarity_score": 88,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:08:38.820927+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "02e8d3327dfc49e3b26a3a6bff827daa",
+      "asset_id": "9d8c594e7f4243d1a36da9f00c31e850",
+      "platform": "learn.microsoft.com",
+      "leak_image_path": "/seed_leaks/438509cf7bc04160b05204aba705c867_web.jpg",
+      "leak_url": "https://learn.microsoft.com/en-my/answers/questions/5143625/background-powerpoint-slide-changes-in-presentatio",
+      "similarity_score": 81,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:08:40.016695+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "71fb63e653d5455e980e7f6ac3b6d07c",
+      "asset_id": "9d8c594e7f4243d1a36da9f00c31e850",
+      "platform": "dsp.stackexchange.com",
+      "leak_image_path": "/seed_leaks/aaf5408003014a549c0410cd1dac8405_web.jpg",
+      "leak_url": "https://dsp.stackexchange.com/questions/63549/computationally-efficient-ways-of-determining-if-pixels-are-clumped",
+      "similarity_score": 74,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:08:40.410975+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "e243d22fb0324ef0b635fa05ffbb8846",
+      "asset_id": "9d8c594e7f4243d1a36da9f00c31e850",
+      "platform": "woocommerce.com",
+      "leak_image_path": "/seed_leaks/1b0ac6bb25a4477c9b837937c4ebd0d6_web.jpg",
+      "leak_url": "https://woocommerce.com/products/authorize-net-payments-for-woocommerce/",
+      "similarity_score": 67,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:08:41.431017+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "b50432dcc1c1432aa70beac8abba0ba4",
+      "asset_id": "9d8c594e7f4243d1a36da9f00c31e850",
+      "platform": "forum.image.sc",
+      "leak_image_path": "/seed_leaks/aaa4e450281745188fcfa72cd361dc28_web.jpg",
+      "leak_url": "https://forum.image.sc/t/i-try-to-do-tissue-segmentation/21811",
+      "similarity_score": 60,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:08:41.982422+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "a32223e28ad3475fa0c35a3618523616",
+      "asset_id": "9d8c594e7f4243d1a36da9f00c31e850",
+      "platform": "thewizardapprentice.com",
+      "leak_image_path": "/seed_leaks/c7b1ef15c99347c286c09c8078d6d81f_web.jpg",
+      "leak_url": "https://thewizardapprentice.com/2022/11/01/writing-a-game-not-an-engine/",
+      "similarity_score": 53,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:08:42.978988+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "ec14169fa08c4943badbcf1b523d2517",
+      "asset_id": "9d8c594e7f4243d1a36da9f00c31e850",
+      "platform": "www.behance.net",
+      "leak_image_path": "/seed_leaks/535e03765f074917bef2e4f4e3d2fb85_web.jpg",
+      "leak_url": "https://www.behance.net/memonaghay25cc",
+      "similarity_score": 46,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:08:43.514932+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "8d24ae32569c449e99b4ad148fda46c2",
+      "asset_id": "a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "platform": "commons.wikimedia.org",
+      "leak_image_path": "/seed_leaks/b604dc1d6bb14997a50fe86607cf0275_web.jpg",
+      "leak_url": "https://commons.wikimedia.org/wiki/File:Example_en.svg",
+      "similarity_score": 95,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:10:40.164155+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "17f7a7b59472403dbb7e003faa95cc3d",
+      "asset_id": "a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "platform": "www.reddit.com",
+      "leak_image_path": "/seed_leaks/99ce7f90649c46a294c6d75acb866201_web.jpg",
+      "leak_url": "https://www.reddit.com/r/help/comments/1ucd7qk/images_wont_show_on_feed_when_using_the_new/",
+      "similarity_score": 88,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:10:40.277032+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "6b6c236bdea443a6a5935f3b02c0d04e",
+      "asset_id": "a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "platform": "simple.wiktionary.org",
+      "leak_image_path": "/seed_leaks/225f4466b10c4e00882fa6015de01487_web.jpg",
+      "leak_url": "https://simple.wiktionary.org/wiki/Help:Images",
+      "similarity_score": 81,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:10:40.597046+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "13b532ab7d864aae8a3e264ad2d095a8",
+      "asset_id": "a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "platform": "commons.wikimedia.org",
+      "leak_image_path": "/seed_leaks/c05fac23be234c029b14896b7dbc9c68_web.jpg",
+      "leak_url": "https://commons.wikimedia.org/wiki/File:Example_i18n.svg",
+      "similarity_score": 74,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:10:41.125537+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "c47b96a4dda84f64a8766af0e7ab5975",
+      "asset_id": "a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "platform": "gnu-octave.github.io",
+      "leak_image_path": "/seed_leaks/17d0418a6faa422ab4d8001675e67abc_web.jpg",
+      "leak_url": "https://gnu-octave.github.io/packages/pkg-example/",
+      "similarity_score": 67,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:10:41.655770+00:00",
+      "source": "SERPAPI"
+    },
+    {
+      "id": "2601d9a5a6e642cea3963315a471549f",
+      "asset_id": "a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "platform": "en.wikipedia.org",
+      "leak_image_path": "/seed_leaks/dc1b434ea3c14f4886cea5a9674acb2e_web.jpg",
+      "leak_url": "https://en.wikipedia.org/wiki/Template:Infobox/testcases",
+      "similarity_score": 60,
+      "reasoning": "Real match found via SerpApi Google Lens reverse image search (partial match).",
+      "status": "DETECTED",
+      "detected_at": "2026-07-25T09:10:42.098548+00:00",
+      "source": "SERPAPI"
     }
   ],
   "takedowns": [
@@ -421,6 +822,38 @@
       "platform": "Instagram",
       "notice_text": "DMCA TAKEDOWN NOTICE\n\nTo: Instagram Copyright Agent (via Web form (help.instagram.com \u2014 Meta IP reporting form))\nFrom: NAMRATESH SHRIVASTAV\nEmail: namra@gmail.com\nAddress: tower e\nPhone: 9989876678\n\nI am the copyright owner of the original work described below, and I have\na good faith belief that the material identified is being used without my\nauthorization on Instagram.\n\nDescription of copyrighted work: A creative asset uploaded by the creator.\n\nLocation of infringing material: https://instagram.com/p/leaked_ac0e69bc/\n\nOur automated visual-similarity system flagged this content with a\nsimilarity score of 87/100. Reasoning: Fallback heuristic: images share matching structure and palette consistent with a re-upload.\n\nI have a good faith belief that use of the copyrighted material described\nabove is not authorized by the copyright owner, its agent, or the law.\n\nI swear, under penalty of perjury, that the information in this\nnotification is accurate and that I am the copyright owner, or am\nauthorized to act on behalf of the owner, of an exclusive right that is\nallegedly infringed.\n\nSignature: NAMRATESH SHRIVASTAV\nDate: (auto-generated by GhostTrace)\n",
       "filed_at": "2026-07-25T05:51:33.557699+00:00",
+      "status": "FILED"
+    },
+    {
+      "id": "92468bc29f794aa796c80989881f5130",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb",
+      "platform": "en.wikipedia.org",
+      "notice_text": "DMCA TAKEDOWN NOTICE\n\nTo: Designated DMCA Agent, Wikimedia Foundation, Inc.\n\nI, the undersigned, am the copyright owner of the original visual graphic work described in this notice.\n\nDESCRIPTION OF COPYRIGHTED WORK:\nA visual graphic featuring diagonal text reading 'just an Example' in a bold sans-serif typeface, with 'just an' in lowercase positioned above 'Example'. Dominant colors are dark red and light gray set against a plain off-white background.\n\nLOCATION OF INFRINGING MATERIAL:\nThe unauthorized material is hosted at the following web location:\nhttps://en.wikipedia.org/wiki/Template:Infobox/testcases\n\nSTATEMENTS OF GOOD FAITH AND ACCURACY:\nI have a good faith belief that the use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.\n\nI swear, under penalty of perjury, that the information in this notification is accurate and that I am the copyright owner of the work that is allegedly infringed.\n\nI request that you expeditiously remove or disable access to the infringing content located at the URL provided above.\n\nCONTACT INFORMATION AND SIGNATURE:\nName: NAMRATESH SHRIVASTAV\nAddress: tower e\nPhone: 9989876678\nEmail: namra@gmail.com\n\nElectronic Signature: /NAMRATESH SHRIVASTAV/",
+      "filed_at": "2026-07-25T08:50:02.763137+00:00",
+      "status": "FILED"
+    },
+    {
+      "id": "e6663d680da742d0a998f42ef9da1901",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb",
+      "platform": "YouTube",
+      "notice_text": "DMCA COPYRIGHT TAKEDOWN NOTICE\n\nTo YouTube Copyright Agent:\n\nI am writing to submit a formal copyright infringement notice pursuant to the Digital Millennium Copyright Act (DMCA). I am the copyright owner of the original visual artwork described below.\n\nORIGINAL COPYRIGHTED WORK DESCRIPTION:\nVisual graphic featuring text reading 'just an Example' set at a diagonal angle in a bold sans-serif typeface, with dominant dark red and light gray colors on a plain off-white background ('just an' in lowercase positioned above 'Example').\n\nLOCATION OF INFRINGING MATERIAL:\n- video_url: [insert YouTube video URL, e.g., https://www.youtube.com/watch?v=xxxxxx]\n- channel_name: [insert YouTube channel name]\n- timestamp_of_infringement: [insert timestamp, e.g., 00:45 - 01:10]\n(Reference link where unauthorized use was identified: https://en.wikipedia.org/wiki/Template:Infobox/testcases)\n\nSTATEMENTS:\n1. I have a good faith belief that the use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.\n2. The information in this notification is accurate, and under penalty of perjury, I state that I am the copyright owner of the work allegedly infringed.\n\nPlease remove or disable access to the infringing material expeditiously upon receipt of this notice.\n\nRIGHTS HOLDER CONTACT INFORMATION & SIGNATURE:\nName: NAMRATESH SHRIVASTAV\nAddress: tower e\nPhone: 9989876678\nEmail: namra@gmail.com\n\nElectronic Signature: /NAMRATESH SHRIVASTAV/",
+      "filed_at": "2026-07-25T08:50:32.056049+00:00",
+      "status": "FILED"
+    },
+    {
+      "id": "ecbbc856c11745e2bc462b53fe052d90",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb",
+      "platform": "X",
+      "notice_text": "DMCA COPYRIGHT TAKEDOWN NOTICE\n\nTo: X Corp. Copyright Agent\nSubmission via: help.x.com/forms/dmca\n\nSTATEMENT OF OWNERSHIP & DESCRIPTION OF COPYRIGHTED WORK\nI, NAMRATESH SHRIVASTAV, am the exclusive copyright owner of the original visual graphic asset. \nDescription: Artwork featuring diagonal text reading 'just an Example' set in a bold sans-serif typeface, with 'just an' in lowercase positioned above 'Example'. Dominant colors are dark red and light gray against a plain off-white background.\n\nLOCATION OF INFRINGING MATERIAL\nThe copyrighted material is hosted on X without authorization.\n- tweet_url: [insert tweet_url, e.g., https://x.com/user/status/123456789]\n- handle: [insert handle, e.g., @example_user]\n- media_type: Image\n- External Reference Link: https://en.wikipedia.org/wiki/Template:Infobox/testcases\n\nSTATEMENTS\nI have a good faith belief that the use of the material in the manner complained of is not authorized by the copyright owner, its agent, or the law.\n\nUnder penalty of perjury, I state that the information in this notification is accurate, and that I am the copyright owner authorized to act regarding the exclusive rights that are allegedly infringed.\n\nI request that X remove or disable access to the infringing content expeditiously.\n\nCONTACT INFORMATION & SIGNATURE\nName: NAMRATESH SHRIVASTAV\nAddress: tower e\nPhone: 9989876678\nEmail: namra@gmail.com\n\nElectronic Signature: /NAMRATESH SHRIVASTAV/",
+      "filed_at": "2026-07-25T08:50:50.477357+00:00",
+      "status": "FILED"
+    },
+    {
+      "id": "c00426f9bd9a45faa1172574242bfa01",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb",
+      "platform": "Instagram",
+      "notice_text": "DMCA TAKEDOWN NOTICE\n\nTo: Instagram Copyright Agent (via Web form (help.instagram.com \u2014 Meta IP reporting form))\nFrom: NAMRATESH SHRIVASTAV\nEmail: namra@gmail.com\nAddress: tower e\nPhone: 9989876678\n\nI am the copyright owner of the original work described below, and I have\na good faith belief that the material identified is being used without my\nauthorization on Instagram.\n\nDescription of copyrighted work: Subject: Diagonal text reading 'just an Example'. Dominant colors: dark red, light gray. Distinguishing features: Text reading 'just an Example'; Text set at a diagonal angle; 'just an' in lowercase above 'Example'; Bold sans-serif typeface; Plain off-white background.\n\nLocation of infringing material: https://en.wikipedia.org/wiki/Template:Infobox/testcases\n\nOur automated visual-similarity system flagged this content with a\nsimilarity score of 60/100. Reasoning: Real match found via SerpApi Google Lens reverse image search (partial match).\n\nI have a good faith belief that use of the copyrighted material described\nabove is not authorized by the copyright owner, its agent, or the law.\n\nI swear, under penalty of perjury, that the information in this\nnotification is accurate and that I am the copyright owner, or am\nauthorized to act on behalf of the owner, of an exclusive right that is\nallegedly infringed.\n\nSignature: NAMRATESH SHRIVASTAV\nDate: (auto-generated by GhostTrace)\n",
+      "filed_at": "2026-07-25T08:50:52.659348+00:00",
       "status": "FILED"
     }
   ],
@@ -710,6 +1143,293 @@
       "timestamp": "2026-07-25T07:56:46.180194+00:00",
       "action": "SCAN_RUN",
       "details": "Real web scan completed for asset cae40a2ddeb24bd9951c5ceb6b848cfc: 6 new incident(s)",
+      "incident_id": null
+    },
+    {
+      "id": "37977da0149b4dd49dec0ca9118744fc",
+      "timestamp": "2026-07-25T08:48:40.343402+00:00",
+      "action": "ASSET_UPLOADED",
+      "details": "Uploaded asset 'Example.jpg' (sha256 99bd915a3819...)",
+      "incident_id": null
+    },
+    {
+      "id": "c035d97002ca4af88ff153dd74980701",
+      "timestamp": "2026-07-25T08:48:45.802111+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on commons.wikimedia.org via SerpApi (score 95) for asset e51aec2c3ca74151bfab7f29f2e61e3c",
+      "incident_id": "9450e0bc1b4b4dec9452d3b540b1479e"
+    },
+    {
+      "id": "a60e31822c7d4892939a28d7d810bdcb",
+      "timestamp": "2026-07-25T08:48:45.947762+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on www.reddit.com via SerpApi (score 88) for asset e51aec2c3ca74151bfab7f29f2e61e3c",
+      "incident_id": "d1163251df0c4353b608af1fdeee38b2"
+    },
+    {
+      "id": "7824ba5d786e4ef697624a434e3b98be",
+      "timestamp": "2026-07-25T08:48:46.276449+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on simple.wiktionary.org via SerpApi (score 81) for asset e51aec2c3ca74151bfab7f29f2e61e3c",
+      "incident_id": "edc3d6374523480ba7c3ee3b0df3420b"
+    },
+    {
+      "id": "3580aae9db424ea8ae146cb400a50378",
+      "timestamp": "2026-07-25T08:48:46.816978+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on commons.wikimedia.org via SerpApi (score 74) for asset e51aec2c3ca74151bfab7f29f2e61e3c",
+      "incident_id": "d2e87a5e6ffa4303b464b3ead21cdb9b"
+    },
+    {
+      "id": "927298ff5084422a92151e22be48c424",
+      "timestamp": "2026-07-25T08:48:47.375536+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on gnu-octave.github.io via SerpApi (score 67) for asset e51aec2c3ca74151bfab7f29f2e61e3c",
+      "incident_id": "4f696d64f58b4a9a98de9cbea9f13d3f"
+    },
+    {
+      "id": "3b689128910e462caf5d9e39baf4d859",
+      "timestamp": "2026-07-25T08:48:47.780750+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on en.wikipedia.org via SerpApi (score 60) for asset e51aec2c3ca74151bfab7f29f2e61e3c",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb"
+    },
+    {
+      "id": "6c4c8d00f19d428e827b9fd8cc9bae1d",
+      "timestamp": "2026-07-25T08:48:48.114059+00:00",
+      "action": "SCAN_RUN",
+      "details": "Real web scan completed for asset e51aec2c3ca74151bfab7f29f2e61e3c: 6 new incident(s)",
+      "incident_id": null
+    },
+    {
+      "id": "2f93699726e94311afb8457d63413c6d",
+      "timestamp": "2026-07-25T08:50:02.764436+00:00",
+      "action": "DMCA_FILED",
+      "details": "DMCA notice filed on en.wikipedia.org for incident 7fc70c005e4141ffb943f9ff6b8c91cb",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb"
+    },
+    {
+      "id": "c6482b6be5af4b748c8075ffa08bbb00",
+      "timestamp": "2026-07-25T08:50:32.056140+00:00",
+      "action": "DMCA_FILED",
+      "details": "DMCA notice filed on YouTube for incident 7fc70c005e4141ffb943f9ff6b8c91cb",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb"
+    },
+    {
+      "id": "fc3b947244924f1a8f6b73b654639bda",
+      "timestamp": "2026-07-25T08:50:50.477433+00:00",
+      "action": "DMCA_FILED",
+      "details": "DMCA notice filed on X for incident 7fc70c005e4141ffb943f9ff6b8c91cb",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb"
+    },
+    {
+      "id": "76c5df3d7f884525b55fc5b45a225464",
+      "timestamp": "2026-07-25T08:50:52.659412+00:00",
+      "action": "DMCA_FILED",
+      "details": "DMCA notice filed on Instagram for incident 7fc70c005e4141ffb943f9ff6b8c91cb",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb"
+    },
+    {
+      "id": "98faabb7c2c546c2a041d91adf599d2c",
+      "timestamp": "2026-07-25T08:50:52.659433+00:00",
+      "action": "NUKE_TRIGGERED",
+      "details": "Nuke triggered for incident 7fc70c005e4141ffb943f9ff6b8c91cb: filed on all 4 platforms",
+      "incident_id": "7fc70c005e4141ffb943f9ff6b8c91cb"
+    },
+    {
+      "id": "c88f8bedec534d7880fb89ae3358806e",
+      "timestamp": "2026-07-25T08:59:07.076792+00:00",
+      "action": "ASSET_UPLOADED",
+      "details": "Uploaded asset '2_c45uNSgO8yIDF7psLBBzAg.webp' (sha256 473f0888a91b...)",
+      "incident_id": null
+    },
+    {
+      "id": "d14242cf4827409cacc1ef417a0f4057",
+      "timestamp": "2026-07-25T08:59:12.576751+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on medium.com via SerpApi (score 95) for asset e982d4330e0a42338396e1c196d21ee3",
+      "incident_id": "2d9ddb368a7e494296416983a306da55"
+    },
+    {
+      "id": "49b9ee1ac1614426b4fd63b1025e4013",
+      "timestamp": "2026-07-25T08:59:12.707289+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on X via SerpApi (score 88) for asset e982d4330e0a42338396e1c196d21ee3",
+      "incident_id": "20b4f92ebaed4c158cacaa0ba240ac7a"
+    },
+    {
+      "id": "fe7aad34f32e447497ffef4dec6f0780",
+      "timestamp": "2026-07-25T08:59:23.070803+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on in.linkedin.com via SerpApi (score 81) for asset e982d4330e0a42338396e1c196d21ee3",
+      "incident_id": "11d5914762ef47e2a4802bd2ffd74310"
+    },
+    {
+      "id": "029834de2cfd48cea8a886a2d0c79280",
+      "timestamp": "2026-07-25T08:59:33.829239+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on in.linkedin.com via SerpApi (score 74) for asset e982d4330e0a42338396e1c196d21ee3",
+      "incident_id": "fdf94c74a8ba4913b8244775e78efd35"
+    },
+    {
+      "id": "ecf5ee0e23924cc8a6d4623eb755a14d",
+      "timestamp": "2026-07-25T08:59:35.077550+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on github.com via SerpApi (score 67) for asset e982d4330e0a42338396e1c196d21ee3",
+      "incident_id": "fbe151ea201442398af9d354dbce4b4c"
+    },
+    {
+      "id": "fcc9f63089f641e9b1391d7850b44dc2",
+      "timestamp": "2026-07-25T08:59:35.739260+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on www.superprof.co.nz via SerpApi (score 60) for asset e982d4330e0a42338396e1c196d21ee3",
+      "incident_id": "d44f565f50b74639be258bfb7a72b830"
+    },
+    {
+      "id": "9893c1ce8e32435d84f6ee5bbdebff3f",
+      "timestamp": "2026-07-25T08:59:36.775891+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on independent.academia.edu via SerpApi (score 53) for asset e982d4330e0a42338396e1c196d21ee3",
+      "incident_id": "76fda17a5f924c6c8969d454066ef1f3"
+    },
+    {
+      "id": "55ca8fff6b2a4e289f6e42597f7a7ffd",
+      "timestamp": "2026-07-25T08:59:37.980392+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on rocketreach.co via SerpApi (score 46) for asset e982d4330e0a42338396e1c196d21ee3",
+      "incident_id": "a1a6800b0ab74cdf80b7ab23b8f5df13"
+    },
+    {
+      "id": "81024ffc220d4c05a9d891128e38fa3f",
+      "timestamp": "2026-07-25T08:59:37.980403+00:00",
+      "action": "SCAN_RUN",
+      "details": "Real web scan completed for asset e982d4330e0a42338396e1c196d21ee3: 8 new incident(s)",
+      "incident_id": null
+    },
+    {
+      "id": "d75f29dd7f544986be7297a3260bfcf1",
+      "timestamp": "2026-07-25T08:59:50.428485+00:00",
+      "action": "SCAN_RUN",
+      "details": "Real web scan completed for asset e982d4330e0a42338396e1c196d21ee3: 0 new incident(s)",
+      "incident_id": null
+    },
+    {
+      "id": "2845cab71e104533be104bf11265de6d",
+      "timestamp": "2026-07-25T09:08:38.128195+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on discussions.unity.com via SerpApi (score 95) for asset 9d8c594e7f4243d1a36da9f00c31e850",
+      "incident_id": "84dd53f3e713487d975d94ff3f39bd9a"
+    },
+    {
+      "id": "f129f0ecbd2243db8aa345e9188a5da5",
+      "timestamp": "2026-07-25T09:08:38.820996+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on YouTube via SerpApi (score 88) for asset 9d8c594e7f4243d1a36da9f00c31e850",
+      "incident_id": "ad01196831b7489a8482ec6303fffda1"
+    },
+    {
+      "id": "d321c66ef4734042ae3654591e40a29a",
+      "timestamp": "2026-07-25T09:08:40.016736+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on learn.microsoft.com via SerpApi (score 81) for asset 9d8c594e7f4243d1a36da9f00c31e850",
+      "incident_id": "02e8d3327dfc49e3b26a3a6bff827daa"
+    },
+    {
+      "id": "b4724ea5185a4b7d926bd9da87765820",
+      "timestamp": "2026-07-25T09:08:40.411029+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on dsp.stackexchange.com via SerpApi (score 74) for asset 9d8c594e7f4243d1a36da9f00c31e850",
+      "incident_id": "71fb63e653d5455e980e7f6ac3b6d07c"
+    },
+    {
+      "id": "376cbb4243f74ef6b83b37cd4923a3c5",
+      "timestamp": "2026-07-25T09:08:41.431081+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on woocommerce.com via SerpApi (score 67) for asset 9d8c594e7f4243d1a36da9f00c31e850",
+      "incident_id": "e243d22fb0324ef0b635fa05ffbb8846"
+    },
+    {
+      "id": "cad975c6854742629734cfe8161621bd",
+      "timestamp": "2026-07-25T09:08:41.982596+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on forum.image.sc via SerpApi (score 60) for asset 9d8c594e7f4243d1a36da9f00c31e850",
+      "incident_id": "b50432dcc1c1432aa70beac8abba0ba4"
+    },
+    {
+      "id": "866a4e6eea5e49c9972101d2298ec025",
+      "timestamp": "2026-07-25T09:08:42.979146+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on thewizardapprentice.com via SerpApi (score 53) for asset 9d8c594e7f4243d1a36da9f00c31e850",
+      "incident_id": "a32223e28ad3475fa0c35a3618523616"
+    },
+    {
+      "id": "879f8e6c4d344fe7928ccb5fac4e7090",
+      "timestamp": "2026-07-25T09:08:43.514988+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on www.behance.net via SerpApi (score 46) for asset 9d8c594e7f4243d1a36da9f00c31e850",
+      "incident_id": "ec14169fa08c4943badbcf1b523d2517"
+    },
+    {
+      "id": "596643402a784f1bbc693d1bd60d0725",
+      "timestamp": "2026-07-25T09:08:43.514999+00:00",
+      "action": "SCAN_RUN",
+      "details": "Real web scan completed for asset 9d8c594e7f4243d1a36da9f00c31e850: 8 new incident(s)",
+      "incident_id": null
+    },
+    {
+      "id": "43099985d5cc4d98994211a7d324f37a",
+      "timestamp": "2026-07-25T09:10:25.285491+00:00",
+      "action": "ASSET_UPLOADED",
+      "details": "Uploaded asset 'Example.jpg' (sha256 99bd915a3819...)",
+      "incident_id": null
+    },
+    {
+      "id": "b3b1f0cc34894ca69b566dab1dfb71e5",
+      "timestamp": "2026-07-25T09:10:40.164245+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on commons.wikimedia.org via SerpApi (score 95) for asset a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "incident_id": "8d24ae32569c449e99b4ad148fda46c2"
+    },
+    {
+      "id": "237b8aaa77274af6b63ffbce2278e82f",
+      "timestamp": "2026-07-25T09:10:40.277127+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on www.reddit.com via SerpApi (score 88) for asset a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "incident_id": "17f7a7b59472403dbb7e003faa95cc3d"
+    },
+    {
+      "id": "06ccf474f4d84a51adc3f28fe5848450",
+      "timestamp": "2026-07-25T09:10:40.597164+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on simple.wiktionary.org via SerpApi (score 81) for asset a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "incident_id": "6b6c236bdea443a6a5935f3b02c0d04e"
+    },
+    {
+      "id": "c5025e0b0536408799eea5d2ffbd22c1",
+      "timestamp": "2026-07-25T09:10:41.125665+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on commons.wikimedia.org via SerpApi (score 74) for asset a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "incident_id": "13b532ab7d864aae8a3e264ad2d095a8"
+    },
+    {
+      "id": "1def9c99a4064f99bd3b4be70a3f31b0",
+      "timestamp": "2026-07-25T09:10:41.655914+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on gnu-octave.github.io via SerpApi (score 67) for asset a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "incident_id": "c47b96a4dda84f64a8766af0e7ab5975"
+    },
+    {
+      "id": "1dcb9c523cc74773ae4e76374f427ea5",
+      "timestamp": "2026-07-25T09:10:42.098595+00:00",
+      "action": "INCIDENT_DETECTED",
+      "details": "[REAL] Detected leak on en.wikipedia.org via SerpApi (score 60) for asset a4bc9c9958fa4eb3a9aeaa5186cb6513",
+      "incident_id": "2601d9a5a6e642cea3963315a471549f"
+    },
+    {
+      "id": "0b4625b27423485d9a82875df423fb27",
+      "timestamp": "2026-07-25T09:10:42.357092+00:00",
+      "action": "SCAN_RUN",
+      "details": "Real web scan completed for asset a4bc9c9958fa4eb3a9aeaa5186cb6513: 6 new incident(s)",
       "incident_id": null
     }
   ]

@@ -55,7 +55,7 @@ export default function Onboarding({ onDone }: Props) {
         <p className="text-[11px] font-semibold uppercase tracking-[0.22em] text-violet-deep">
           Set up your profile
         </p>
-        <h1 className="mt-1 font-display text-3xl font-bold tracking-tight text-ink">
+        <h1 className="mt-1 font-display text-3xl font-bold tracking-tight text-gradient">
           Who are we protecting?
         </h1>
         <p className="mx-auto mt-3 max-w-sm text-xs leading-relaxed text-ink-soft">
